@@ -31,7 +31,7 @@
                         <div class="product-payment-inner-st">
                             <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="#registroplatica">Registro plática informativa</a></li>
-                                <li><a href="#modificacioninscritos"> Modificar usuarios</a></li>
+                                <li><a href="#modificacioninscritos"> Registros plática informativa</a></li>
                             </ul>
 
                             <div id="myTabContent" class="tab-content custom-product-edit">
@@ -41,7 +41,7 @@
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad add-professors">
                                                     <form action="<?php echo e(route('vinculacion')); ?>"
-                                                          class="dropzone dropzone-custom needsclick add-professors"
+                                                          class="dropzone dropzone-custom needsclick"
                                                           id="demo1-upload">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -70,25 +70,28 @@
                                                                            placeholder="Apellido materno">
                                                                 </div>
                                                                 <div class="form-group ">
-                                                                    <select name="genero" id="genero" class="form-control">
-                                                                        <?php if(isset($registro)): ?> value="<?php echo e($registro->genero); ?>" <?php endif; ?>
+                                                                    <select name="genero" id="genero" class="form-control"
+                                                                        <?php if(isset($registro)): ?> value="<?php echo e($registro->genero); ?>" <?php endif; ?>>
                                                                         <option value="none" selected="" disabled="" style="color: darkgrey;">Genero</option>
                                                                         <option value="Masculino">Masculino</option>
                                                                         <option value="Femenino">Femenino</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
-
-                                                                    <input name="estado" id="estado" type="text"
-                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->estado); ?>" <?php endif; ?>
-                                                                           class="form-control"
-                                                                           required="true" placeholder="Estado de nacimiento">
+                                                                    <select required='true' class="form-control select2"  name="estado" id="estado" <?php if(isset($registro)): ?> value="<?php echo e($registro->estado); ?>" <?php endif; ?>>
+                                                                        <option value="none" selected="" disabled="">Estado de nacimiento</option>
+                                                                        <?php $__currentLoopData = $cat_entidades; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $entidades): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e($entidades->cve_ent); ?>"> <?php echo e($entidades->nom_ent); ?></option>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="municipio" id="municipio" type="text"
-                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->municipio); ?>" <?php endif; ?>
-                                                                           class="form-control"
-                                                                           required="true" placeholder="Municipio de donde nos visita">
+                                                                    <select required='true' class="form-control select2"  name="municipio" id="municipio">
+                                                                        <option value="none" selected="" disabled="">Municipio de donde nos visita</option>
+                                                                        <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e($municipios->cve_compuesta_ent_mun); ?>"> <?php echo e($municipios->nom_mun); ?></option>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                    </select>
                                                                 </div>
 
                                                             </div>

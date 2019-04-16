@@ -22,6 +22,7 @@ class HomeController extends Controller
         }
 
 
+
         return View::make('inicio');
     }
 
@@ -53,6 +54,8 @@ class HomeController extends Controller
 
                 return View::make('alumnos');
     }
+
+
 
 
 }
