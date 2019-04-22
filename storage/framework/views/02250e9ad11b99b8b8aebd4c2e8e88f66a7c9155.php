@@ -5,42 +5,54 @@
             <?php if(isset($alert)): ?>
                 <div class="row" style="padding: 10px;">
                     <div class="col-12">
-                        <div class="alert alert-<?php echo e($alert->type); ?>">
-                            <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                        <div  class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                             <?php echo e($alert->message); ?>
 
-                            Ocurrio un error al guardar los datos por favor contacta con el administrador.
-                        </div>
                     </div>
                 </div>
             <?php endif; ?>
 
-            <div class="single-pro-review-area mt-t-30 mg-b-15 ">
+                <?php if(isset($alert2)): ?>
+                    <div class="row" style="padding: 10px;">
+                        <div class="col-12">
+                            <div class="alert alert-<?php echo e($alert2->type); ?>">
+                                <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                <?php echo e($alert2->message); ?>
 
-                <div class="breadcome-area">
-                    <div class="container-fluid">
-                        <div class="row">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                <?php endif; ?>
 
-            <div class="container-fluid ">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="product-payment-inner-st">
-                            <ul id="myTabedu1" class="tab-review-design">
-                                <li class="active"><a href="#registroplatica">Registro plática informativa</a></li>
-                                <li><a href="#modificacioninscritos"> Registros plática informativa</a></li>
-                            </ul>
+             <div class="single-pro-review-area mt-t-30 mg-b-15 ">
 
-                            <div id="myTabContent" class="tab-content custom-product-edit">
-                                <div class="product-tab-list tab-pane fade active in" id="description">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div id="dropzone1" class="pro-ad add-professors">
-                                                    <form action="<?php echo e(route('vinculacion')); ?>"
+                 <div class="breadcome-area">
+                     <div class="container-fluid">
+                         <div class="row">
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+             <div class="container-fluid ">
+                 <div class="row">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                         <div class="product-payment-inner-st">
+                             <ul id="myTabedu1" class="tab-review-design">
+                                 <li class="active"><a href="#registroplatica">Registro plática informativa</a></li>
+                                 <li><a href="#modificacioninscritos"> Consulta de registros</a></li>
+                             </ul>
+
+                             <div id="myTabContent" class="tab-content custom-product-edit">
+                                 <div class="product-tab-list tab-pane fade active in" id="description">
+                                     <div class="row">
+                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                             <div class="review-content-section">
+                                                 <div id="dropzone1" class="pro-ad add-professors">
+                                                     <form action="<?php echo e(route('registro')); ?>"
                                                           class="dropzone dropzone-custom needsclick"
                                                           id="demo1-upload">
                                                         <div class="row">

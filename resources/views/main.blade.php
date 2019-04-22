@@ -103,7 +103,13 @@ $user = Session::get('usuario');
                         </li>
 
                         <li>
-                            <a class="has-arrow" href="vinculacion" aria-expanded="false"><span class="educate-icon educate-library "></span> <span class="mini-click-non">Vinculación</span></a>
+                            <a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-library "></span> <span class="mini-click-non">Vinculación</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Registro platica informativa" href="vinculacion" class="@if($_SERVER['REQUEST_URI'] == '/vinculacion') active @endif ><span class="mini-sub-pro">Registro platica</span></a></li>
+                                <li><a title="Test ubica tu financiamiento" href="add-professor.html"><span class="mini-sub-pro">Test ubica</span></a></li>
+                                <li><a title="Evaluación " href="edit-professor.html"><span class="mini-sub-pro">Evaluación</span></a></li>
+
+                            </ul>
                         </li>
 
                         <li>
