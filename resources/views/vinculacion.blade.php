@@ -40,7 +40,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad add-professors">
-                                                    <form action="{{route('vinculacion')}}"
+                                                    <form action="{{route('registro')}}"
                                                           class="dropzone dropzone-custom needsclick"
                                                           id="demo1-upload">
                                                         <div class="row">

@@ -20,6 +20,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 class RegistroController extends BaseController
 {
+
+
     public function vinculacion()
     {
         $usuario_session = Session::get('usuario');
@@ -59,7 +61,9 @@ class RegistroController extends BaseController
                     $registro->save();
 
 
-                    return View::make('vinculacion');
+                    return View::make('vinculacion', array(
+                    'cat_municipios' => $cat_municipios,
+                    'cat_entidades' => $cat_entidades,));
 
 
 
