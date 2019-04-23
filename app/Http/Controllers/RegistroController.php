@@ -61,7 +61,9 @@ class RegistroController extends BaseController
                     $registro->escolaridad = Input::get('escolaridad');
                     $registro->ocupacion = Input::get('ocupacion');
 
+
                     $registro->save();
+
 
                         $alert = new \stdClass();
                         $alert->message = 'Los datos se guardaron correctamente';
