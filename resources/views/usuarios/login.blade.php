@@ -34,7 +34,7 @@
     <!-- educate icon CSS
 		============================================ -->
     <link rel="stylesheet" href="css/educate-custon-icon.css">
-    <!-- morrisjs CSS
+    <!-- morrisjs_ CSS
 		============================================ -->
     <link rel="stylesheet" href="css/morrisjs/morris.css">
     <!-- mCustomScrollbar CSS
@@ -68,7 +68,7 @@
       <div class="login-box content-error col-12" >
         <div class="hpanel" style="text-align: center">
           <div class="panel-body error-page-int" style="width: 450px; display: block">
-            <img src="img/logo/logo3.png" width="250px" style="margin-bottom: 15px">
+            <img src="img/logo/logo.png" width="250px" style="margin-bottom: 15px">
             <form method="post">
               <div class="form-group has-feedback">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

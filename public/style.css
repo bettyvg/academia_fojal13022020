@@ -11,10 +11,50 @@ a:focus {outline:0px solid}
 img {max-width:100%;height:auto}
 .fix {overflow:hidden}
 p {margin:0 0 15px;}
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h6 {
   margin: 0 0 10px;
-  font-weight:700;
+ /* font-weight:700; Modificado para que no sean negritas*/
 }
+
+.textnegritas{
+	font-weight:700;
+	color: #90d5e6;
+}
+
+.anchocapotabla
+{
+	width: 30%;
+
+}
+.instruc{
+
+	background-color: #90d5e6;
+	text-align: center;
+	height: 25px;
+	border-radius:10px;
+	border: 1px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.fondo{
+	background-color: #f6f8fa;
+}
+
+.aviso{
+	font-size: x-small;
+	color: #acacac;
+	margin: 10px 0px 50px 0px
+}
+
+.avisoimg{
+	width: 100px;
+	height: 100px;
+	margin: 10px 0px 0px 0px
+}
+
 a {transition: all 0.3s ease 0s;text-decoration:none;}
 a:hover{
   color: #ec4445;
@@ -42,6 +82,9 @@ body {}
   font-weight: normal;
   font-style: normal;
 }
+
+
+
 /*----------------------------------------*/
 /*  2. Helper Class
 /*----------------------------------------*/
@@ -85,7 +128,7 @@ body {}
     background: #65b12d;
 }
 .bg-purple {
-    background: #D80027;
+    background: #90d5e6;
 }
 /*----------------------------------------*/
 /*  3. All Nested Class
@@ -1255,7 +1298,7 @@ ul.tab-custon-design li, ul.tab-review-design li {
     left: 0px;
     width: 0%;
     height: 2px;
-    background: #FF433E;
+    background: #90d5e6;
     content: "";
 	transition:all .4s ease 0s;
 }
@@ -1265,7 +1308,7 @@ ul.tab-custon-design li, ul.tab-review-design li {
     left: 0px;
     width: 80%;
     height: 2px;
-    background: #FF433E;
+    background: #90d5e6;
     content: "";
 	transition:all .4s ease 0s;
 }
@@ -2947,7 +2990,7 @@ td.text-right.mail-date {
 	box-shadow:none;
 }
 .form-control:focus {
-    border-color: #FF433E;
+    border-color: #90d5e6;
     outline: 0;
     box-shadow: none;
 }
@@ -3610,7 +3653,7 @@ div#sparklinehome canvas {
 }
 /*titulo arriba*/
 .header-top-area {
-    background: #8ed4e5;
+    background: #fe4138;
 }
 .sidebar-nav .metismenu{
 	background: #fff;
@@ -4692,3 +4735,6 @@ div#sparklinehome canvas {
 	font-size: 11px;
 	color: #bdbdbd;
 }
+
+
+

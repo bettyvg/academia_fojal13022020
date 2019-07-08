@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Models;
-use Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
-class Registro extends Eloquent
+class Registro extends Model
 {
-    protected $table = 'registroplatica';
+    public $table = 'registroplatica';
     protected $primaryKey = 'id_registro';
+
+    protected $fillable = ['nombre','apellido_paterno','apellido_materno','genero','cve_ent','cve_compuesta_ent_mun','fecha_nacimiento',
+        'rfc','correo','telefono','id_escolaridad','ocupacion','updated_at','created_at'];
 }
 ?>

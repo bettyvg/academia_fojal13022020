@@ -12,25 +12,44 @@
 */
 
 Route::get('/', 'HomeController@inicio')->name('inicio');
-Route::get('capacitores', 'HomeController@capacitores')->name('capacitores');
+
 Route::get('alumnos', 'HomeController@alumnos')->name('alumnos');
-Route::post('usuarios3', 'HomeController@usuarios3')->name('usuarios3');
-Route::get('usuarios3', 'HomeController@usuarios3')->name('usuarios3');
-Route::post('vinculacion', 'RegistroController@registro')->name('registro');
-Route::get('vinculacion', 'RegistroController@vinculacion')->name('vinculacion');
+//Route::post('usuarios', 'HomeController@usuarios')->name('usuarios');
+//Route::get('usuarios', 'HomeController@usuarios')->name('usuarios');
+Route::get('registroplatica', 'RegistroController@vinculacion')->name('registroplatica');
+Route::post('registroplatica', 'RegistroController@registro')->name('registroplatica');
+Route::get('testubica', 'HomeController@testubica')->name('testubica');
+Route::get('calendario', 'HomeController@calendario')->name('calendario');
+Route::get('cursos', 'HomeController@cursos')->name('cursos');
 
-//Route::post('asistentesplatica', 'RegistroController@registro')->name('asistentesplatica');
-//Route::get('asistentesplatica', 'HomeController@asistentesplatica')->name('asistentesplatica');
 
+
+
+Route::get('evaluacionplaticainfo', 'EvaluacionController@evaluacionplatica')->name('evaluacionplaticainfo');
+Route::post('evaluacionplaticainfo', 'EvaluacionController@evaluacion')->name('evaluacionplaticainfo');
+Route::post('EvaluacionCapacitadores', 'EvalCapacitadorController@EvaluacionCapacitadores')->name('EvaluacionCapacitadores');
+Route::get('EvaluacionCapacitadores', 'EvalCapacitadorController@inicioevaluacion')->name('EvaluacionCapacitadores');
+Route::get('BuscarEvaCapacitadores', 'BuscarEvalCapacitadorController@Capacitadorbusqueda')->name('BuscarEvaCapacitadores');
+Route::post('BuscarEvaCapacitadores', 'BuscarEvalCapacitadorController@Capacitadorbusqueda')->name('BuscarEvaCapacitadores');
+
+
+//Route::get('evaluacionplaticainfo', 'EvaluacionController@DetalleEvaluacion')->name('evaluacionplaticainfo');
 
 /** Rutas para modulo de usuarios **/
 Route::get('login', 'UsuariosController@login' )->name('login');
 Route::post('login', 'UsuariosController@login');
-Route::post('usuarios', 'HomeController@usuarios');
+Route::post('usuarios', 'UsuariosController@registro')->name('usuarios');
+Route::get('usuarios', 'UsuariosController@detalle_registrousuarios')->name('usuarios');
+//Route::post('edit_user/{id}', 'UsuariosController@edit');
+Route::get('ModificaUsuarios/{$id}', 'UsuariosController@edit')->name('ModificaUsuarios');
+
+Route::post('get_puesto/{id}', 'UsuariosController@get_puesto');
 Route::get('signout', 'UsuariosController@signout' )->name('signout');
 Route::get('registro', 'UsuariosController@registro' )->name('registro');
-Route::get('edit-user/{id}', 'UsuariosController@edit_user' )->name('edit-user');
-Route::delete('delete-user/{id}', 'UsuariosController@delete_user' )->name('delete-user');
+//Route::post('edit_user/{id}', 'UsuariosController@edit_user' )->name('edit_user');
+
+Route::delete('delete_user/{id}', 'UsuariosController@delete_user')->name('delete_user');
+
 Route::post('registro', 'UsuariosController@registro' )->name('registro_post');
 Route::get('mostrar-usuarios', 'UsuariosController@mostrar_usuarios' )->name('mostrar-usuarios');
 Route::get('test', 'HomeController@test' )->name('test');

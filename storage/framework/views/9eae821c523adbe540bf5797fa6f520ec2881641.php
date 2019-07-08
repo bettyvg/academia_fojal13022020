@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Academia FOJAL</title>
     <meta name="description" content="">
@@ -15,62 +15,63 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.min.css')); ?>">
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <!-- owl.carousel CSS
-		============================================ -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
+    <link rel="stylesheet" href="<?php echo e(asset('css/font-awesome.min.css')); ?>">
+
     <!-- animate CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
     <!-- normalize CSS
-		============================================ -->
-    <link rel="stylesheet" href="css/normalize.css">
+   -->
+    <link rel="stylesheet" href="<?php echo e(asset('css/normalize.css')); ?>">
     <!-- meanmenu icon CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('css/meanmenu.min.css')); ?>">
     <!-- main CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="<?php echo e(asset('css/main.css')); ?>">
     <!-- educate icon CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/educate-custon-icon.css">
-    <!-- morrisjs CSS
+    <link rel="stylesheet" href="<?php echo e(asset('css/educate-custon-icon.css')); ?>">
+    <!--
 		============================================ -->
-    <link rel="stylesheet" href="css/morrisjs/morris.css">
+    <link rel="stylesheet" href="<?php echo e(('css/editor/select2.css')); ?>">
+
     <!-- mCustomScrollbar CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('css/scrollbar/jquery.mCustomScrollbar.min.css')); ?>">
     <!-- metisMenu CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="css/metisMenu/metisMenu-vertical.css">
-    <!-- calendar CSS
-		============================================ -->
-    <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('css/metisMenu/metisMenu.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/metisMenu/metisMenu-vertical.css')); ?>">
+
     <!-- style CSS
 		============================================ -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<?php echo e(asset('style.css')); ?>">
+
     <!-- responsive CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="<?php echo e(asset('css/responsive.css')); ?>">
     <!-- jquery
 		============================================ -->
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <!-- modernizr JS
-		============================================ -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?php echo e(asset('js/vendor/jquery-3.4.1.min.js')); ?>"></script>
+
+    <link rel="stylesheet" href="css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="css/data-table/bootstrap-editable.css">
 
 
+    <!-- formulario JS
+       ============================================ -->
+
+    <script src="<?php echo e(asset('js/formulario.js')); ?>"></script>
 
 
+    <link rel="stylesheet" href="<?php echo e(asset('./css/editor/select2.css')); ?>">
 
-
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 </head>
 
 <?php
@@ -78,15 +79,13 @@ $user = Session::get('usuario');
 ?>
 
 <body>
-    <!--[if lt IE 8]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	<![endif]-->
+
     <!-- Start Left menu area -->
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="home"><br><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
-                <strong><a href="home"><img src="img/logo/logosn.png" alt="" /></a></strong>
+                <a href="home"><br><img class="main-logo" src="<?php echo e(asset('img/logo/logo.png')); ?>" alt="" style="width: 200px"/></a>
+                <strong><a href="home"><img src="img/logo/logosn.png" alt="" style="width: 100px"/></a></strong>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
@@ -99,35 +98,43 @@ $user = Session::get('usuario');
                         </li>
 
                         <li>
-                            <a class="has-arrow" href="usuarios3" aria-expanded="false"><span class="fa fa-users "></span> <span class="mini-click-non">Usuarios</span></a>
+                            <a class="has-arrow" href="<?php echo e(asset('usuarios')); ?>" aria-expanded="false"><span class="fa fa-users "></span> <span class="mini-click-non">Usuarios</span></a>
                         </li>
 
                         <li>
                             <a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-library "></span> <span class="mini-click-non">Vinculación</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Registro platica informativa" href="vinculacion" class="<?php if($_SERVER['REQUEST_URI'] == '/vinculacion'): ?> active <?php endif; ?> ><span class="mini-sub-pro">Registro platica</span></a></li>
-                                <li><a title="Test ubica tu financiamiento" href="add-professor.html"><span class="mini-sub-pro">Test ubica</span></a></li>
-                                <li><a title="Evaluación " href="edit-professor.html"><span class="mini-sub-pro">Evaluación</span></a></li>
+                                <li><a title="Registro plática informativa" href="<?php echo e(route('registroplatica')); ?>" class="<?php if($_SERVER['REQUEST_URI'] == '/registroplatica'): ?> active <?php endif; ?> "><span class="mini-sub-pro">Registro plática</span></a></li>
+                                <li><a title="Test ubica tu financiamiento" href="<?php echo e(route('testubica')); ?>"><span class="mini-sub-pro">Test ubica</span></a></li>
+                                <li><a title="Evaluación de la plática informativa" href="<?php echo e(route('evaluacionplaticainfo')); ?>"><span class="mini-sub-pro">Evaluación agentes</span></a></li>
+                                <li><a title="Evaluación de la capacitadores" href="<?php echo e(route('EvaluacionCapacitadores')); ?>"><span class="mini-sub-pro">Encuesta</span></a></li>
 
                             </ul>
                         </li>
 
                         <li>
-                            <a class="has-arrow" href="capacitores" aria-expanded="false"><span class="educate-icon educate-professor "></span> <span class="mini-click-non">Capacitadores</span></a>
+                            <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-professor "></span> <span class="mini-click-non">Programación</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Capacitadores" href=""><span class="mini-sub-pro">Capacitadores</span></a></li>
+                                <li><a title="Programación cursos" href="<?php echo e(route('inicio')); ?>"><span class="mini-sub-pro">Programación cursos</span></a></li>
+                                <li><a title="Catálago de Temas" href="<?php echo e(route('inicio')); ?>"><span class="mini-sub-pro">Catalago temas</span></a></li>
+                                <li><a title="Pagos" href="<?php echo e(route('inicio')); ?>"><span class="mini-sub-pro">Pagos</span></a></li>
+
+                            </ul>
                         </li>
 
                         <li>
-                            <a class="has-arrow" href="alumnos" aria-expanded="false"><span class="educate-icon educate-student"></span><span class="mini-click-non">Alumnos</span></a>
+                            <a class="has-arrow" href="<?php echo e(route('inicio')); ?>" aria-expanded="false"><span class="educate-icon educate-student"></span><span class="mini-click-non">  Emprendedores</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Cursos</span></a>
+                            <a class="has-arrow" href="<?php echo e(route('cursos')); ?>" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non"> Cursos</span></a>
 
                         </li>
                         <li>
-                            <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Calendario</span></a>
+                            <a title="Landing Page" href="<?php echo e(route('inicio')); ?>" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Calendario</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Descargas</span></a>
+                            <a class="has-arrow" href="<?php echo e(route('inicio')); ?>" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non"> Descargas</span></a>
 
                         </li>
 
@@ -142,12 +149,12 @@ $user = Session::get('usuario');
     </div>
     <!-- End Left menu area -->
     <!-- Start Welcome area -->
-    <div class="all-content-wrapper">
+    <div class="all-content-wrapper" >
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                        <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" style="width: 120px"/></a>
                     </div>
                 </div>
             </div>
@@ -174,7 +181,6 @@ $user = Session::get('usuario');
                                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                         <div class="header-right-info">
                                             <ul class="nav navbar-nav mai-top-nav header-right-menu">
-
                                                 <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span></a>
                                                     <div role="menu" class="notification-author dropdown-menu animated zoomIn">
                                                         <div class="notification-single-top">
@@ -203,7 +209,6 @@ $user = Session::get('usuario');
                                                                     </div>
                                                                 </a>
                                                             </li>
-
                                                         </ul>
                                                         <div class="notification-view">
                                                             <a href="#">Ver todas las notificaciones</a>
@@ -212,12 +217,11 @@ $user = Session::get('usuario');
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-															<img src="img/product/pro4.jpg" alt="" />
+															<img src="img/product/pro4.png" alt=""  style="width: 30px"/>
                                                             <a class="dropdown-toggle" data-toggle="dropdown">
                                                                 <span class="hidden-xs"><?php echo e($user->nombre.' '.$user->apellido_paterno); ?></span>
                                                             </a>
 
-															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                                         <li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>Mi cuenta</a>
@@ -239,6 +243,7 @@ $user = Session::get('usuario');
             <!-- Mobile Menu start -->
             <div class="mobile-menu-area">
                 <div class="container">
+
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="mobile-menu">
@@ -248,17 +253,33 @@ $user = Session::get('usuario');
 
                                         </li>
 
-                                        <li><a data-toggle="collapse" data-target="#demoevent" href="usuarios3">Usuarios <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <li><a data-toggle="collapse" data-target="#demoevent" href="<?php echo e(route('usuarios')); ?>">Usuarios <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 
+                                        </li>
+                                        <li>
+                                            <a class="has-arrow" aria-expanded="false"><span class="mini-click-non">Vinculación</span></a>
+                                            <ul class="submenu-angle" aria-expanded="false">
+                                                <li><a title="Registro plática informativa" href="<?php echo e(route('registroplatica')); ?>" class="<?php if($_SERVER['REQUEST_URI'] == '/registroplatica'): ?> active <?php endif; ?> "><span class="mini-sub-pro">Registro plática</span></a></li>
+                                                <li><a title="Test ubica tu financiamiento" href="<?php echo e(route('testubica')); ?>"><span class="mini-sub-pro">Test ubica</span></a></li>
+                                                <li><a title="Evaluación de la plática informativa" href="<?php echo e(route('evaluacionplaticainfo')); ?>"><span class="mini-sub-pro">Evaluación</span></a></li>
+
+                                            </ul>
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#demopro" href="capacitores">Capacitadores<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#democrou" href="cursos">Alumnos<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <li><a data-toggle="collapse" data-target="#democrou" href="cursos">Emprendedores<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#demolibra" href="#">Cursos <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <li>
+                                            <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-professor "></span> <span class="mini-click-non">Programación</span></a>
+                                            <ul class="submenu-angle" aria-expanded="false">
+                                                <li><a title="Capacitadores" href=""><span class="mini-sub-pro">Capacitadores</span></a></li>
+                                                <li><a title="Programación cursos" href="<?php echo e(route('inicio')); ?>"><span class="mini-sub-pro">Programación cursos</span></a></li>
+                                                <li><a title="Catálago de Temas" href="<?php echo e(route('inicio')); ?>"><span class="mini-sub-pro">Catalago temas</span></a></li>
+                                                <li><a title="Pagos" href="<?php echo e(route('inicio')); ?>"><span class="mini-sub-pro">Pagos</span></a></li>
 
+                                            </ul>
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#demodepart" href="#">Calendario <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 
@@ -278,9 +299,19 @@ $user = Session::get('usuario');
 
         </div>
 
+
         <div class="content-wrapper">
             <?php echo $__env->yieldContent('content'); ?>
         </div>
+        <div class="alert">
+            <strong><?php echo $__env->make('flash::message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?></strong>
+        </div>
+        <div class="content-wrapper">
+            <?php echo $__env->yieldContent('scripts'); ?>
+        </div>
+
+
+
 
        <!-- <div class="footer-copyright-area">
             <div class="container-fluid">
@@ -296,8 +327,12 @@ $user = Session::get('usuario');
 
 
     <!-- bootstrap JS
-		============================================ -->
+       ============================================ -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- jquery
+		============================================ -->
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+
     <!-- wow JS
 		============================================ -->
     <script src="js/wow.min.js"></script>
@@ -316,49 +351,41 @@ $user = Session::get('usuario');
     <!-- scrollUp JS
 		============================================ -->
     <script src="js/jquery.scrollUp.min.js"></script>
-    <!-- counterup JS
-		============================================ -->
-    <script src="js/counterup/jquery.counterup.min.js"></script>
-    <script src="js/counterup/waypoints.min.js"></script>
-    <script src="js/counterup/counterup-active.js"></script>
-    <!-- mCustomScrollbar JS
-		============================================ -->
-    <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
+
     <!-- metisMenu JS
 		============================================ -->
     <script src="js/metisMenu/metisMenu.min.js"></script>
     <script src="js/metisMenu/metisMenu-active.js"></script>
     <!-- morrisjs JS
 		============================================ -->
-    <script src="js/morrisjs/raphael-min.js"></script>
-    <script src="js/morrisjs/morris.js"></script>
-    <script src="js/morrisjs/morris-active.js"></script>
-    <!-- morrisjs JS
-		============================================ -->
     <script src="js/sparkline/jquery.sparkline.min.js"></script>
     <script src="js/sparkline/jquery.charts-sparkline.js"></script>
-    <script src="js/sparkline/sparkline-active.js"></script>
-    <!-- calendar JS
+
+    <!-- maskedinput JS
 		============================================ -->
-    <script src="js/calendar/moment.min.js"></script>
-    <script src="js/calendar/fullcalendar.min.js"></script>
-    <script src="js/calendar/fullcalendar-active.js"></script>
-    <!-- plugins JS
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <script src="js/masking-active.js"></script>
+
+    <!-- tab JS
 		============================================ -->
-    <script src="js/plugins.js"></script>
+    <script src="js/tab.js"></script>
+
     <!-- main JS
 		============================================ -->
     <script src="js/main.js"></script>
-    <!-- tawk chat JS
-		============================================ -->
-    <script src="js/tawk-chat.js"></script>
 
-    <!-- datapicker JS
-    ============================================ -->
-    <script src="js/datepicker/jquery-ui.min.js"></script>
-    <script src="js/datepicker/datepicker-active.js"></script>
-</body>
 
-</html>
+    <!-- data table JS
+            ============================================ -->
+    <script src="js/data-table/bootstrap-table.js"></script>
+    <script src="js/data-table/tableExport.js"></script>
+    <script src="js/data-table/data-table-active.js"></script>
+    <script src="js/data-table/bootstrap-table-editable.js"></script>
+
+    <script src="js/data-table/bootstrap-table-resizable.js"></script>
+    <script src="js/data-table/colResizable-1.5.source.js"></script>
+    <script src="js/data-table/bootstrap-table-export.js"></script>
+
+
+
 <?php /* C:\laragon\www\academia_fojal\resources\views/main.blade.php */ ?>

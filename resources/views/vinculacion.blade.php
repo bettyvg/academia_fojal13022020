@@ -4,7 +4,7 @@
     <section>
         <form action="{{route('vinculacion')}}" method="post" class="form-horizontal">
             @if(isset($alert))
-                <div class="row" style="padding: 10px;">
+                <div class="row" style="padding: 10px; margin: 30px 20px 0px 20px"">
                     <div class="col-12">
                         <div  class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -27,18 +27,8 @@
 
                 @endif
 
-             <div class="single-pro-review-area mt-t-30 mg-b-15 ">
-
-                 <div class="breadcome-area">
-                     <div class="container-fluid">
-                         <div class="row">
-                         </div>
-                     </div>
-                 </div>
-             </div>
-
-
-            <div class="container-fluid ">
+             <div class="single-pro-review-area mt-t-30 mg-b-15" style="margin: 40px 0px 0px 0px">
+             <div class="container-fluid ">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-payment-inner-st">
@@ -48,16 +38,14 @@
                             </ul>
 
                             <div id="myTabContent" class="tab-content custom-product-edit">
-                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                <div class="product-tab-list tab-pane fade active in" id="registroplatica">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad add-professors">
                                                     <form action="{{route('registro')}}">
-
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
 
                                                                 <div class="form-group">
                                                                     <br>
@@ -107,6 +95,7 @@
                                                                 </div>
 
                                                             </div>
+
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                                                                 <div class="form-group">
@@ -171,8 +160,27 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-tab-list tab-pane fade" id="reviews">
+                                <div class="product-tab-list tab-pane fade" id="modificacioninscritos">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <br><br><br>
+                                            <table id="tabla-usuarios" class="table table-bordered table-hover dataTable" role="grid">
+                                                <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1" >Nombre</th>
+                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Apellido paterno</th>
+                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Apellido materno</th>
+                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Genero</th>
+                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Municipio</th>
+                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >RFC</th>
+                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Correo</th>
+                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Acciones</th>
+                                                </tr>
+                                                </thead>
 
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -182,7 +190,7 @@
             </div>
             </div>
 
-
+                </div>
         </form>
         <br>
         @if(isset($alert) && $alert != null && isset($alert->type))

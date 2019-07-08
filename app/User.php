@@ -36,4 +36,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    //Query Scope
+
+    protected function scopeCapacitador($query, $id_capacitador)
+    {
+        if($id_capacitador)
+            return $query->where('capacitador','LIKE', "%$id_capacitador%");
+
+    }
+    protected function scopefecha1($query, $fecha1)
+    {
+        if($fecha1)
+            return $query->where('fecha1','LIKE', "%$fecha1%");
+
+    }
+    protected function scopefecha2($query, $fecha2)
+    {
+        if($fecha2)
+            return $query->where('fecha2','LIKE', "%$fecha2%");
+
+    }
+
 }

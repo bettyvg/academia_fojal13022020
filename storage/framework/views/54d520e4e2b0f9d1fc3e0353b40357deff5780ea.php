@@ -3,16 +3,7 @@
         <form action="" method="post" class="form-horizontal">
 
             <div class="single-pro-review-area mt-t-30 mg-b-15 ">
-
-                <div class="breadcome-area">
-                    <div class="container-fluid">
-                        <div class="row">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                <div class="container-fluid ">
+                <div class="container-fluid " style="margin: 40px 0px 0px 0px">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="product-payment-inner-st">
@@ -29,7 +20,7 @@
                                                     <div id="dropzone1" class="pro-ad addcoursepro">
                                                         <form action="<?php echo e(route('usuarios3')); ?>"
                                                               class="dropzone dropzone-custom needsclick addcourse"
-                                                              id="demo1-upload">
+                                                              id="formulario-usuarios">
                                                             <div class="row">
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="form-group">
@@ -147,25 +138,36 @@
                                                 <div class="review-content-section">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <div class="devit-card-custom">
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="Email">
+                                                            <div class="box-body">
+                                                                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <table id="tabla-usuarios" class="table table-bordered table-hover dataTable" role="grid">
+                                                                                <thead>
+                                                                                <tr role="row">
+                                                                                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1" >Nombre</th>
+                                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Apellido paterno</th>
+                                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Apellido materno</th>
+                                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Correo</th>
+                                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Area</th>
+                                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Puesto</th>
+                                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Extensión</th>
+                                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Acciones</th>
+                                                                                </tr>
+                                                                                </thead>
+
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <input type="number" class="form-control"
-                                                                           placeholder="Phone">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="password" class="form-control"
-                                                                           placeholder="Password">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="password" class="form-control"
-                                                                           placeholder="Confirm Password">
-                                                                </div>
-                                                                <a href="#"
-                                                                   class="btn btn-primary waves-effect waves-light">Submit</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -194,4 +196,4 @@
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<?php /* C:\laragon\www\academia_fojal\resources\views/usuarios3.blade.php */ ?>
+<?php /* C:\laragon\www\academia_fojal\resources\views/usuarios.blade.php */ ?>

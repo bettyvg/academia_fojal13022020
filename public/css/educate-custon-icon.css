@@ -113,9 +113,6 @@
 .educate-student:before {
   content: "\e918";
 }
-.educate-student:before {
-  content: "";
-}
 .educate-price-tag:before {
   content: "\e935";
 }

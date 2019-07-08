@@ -5,112 +5,136 @@
 
 
         <!-- Single pro tab review Start-->
-        <div class="single-pro-review-area mt-t-30 mg-b-15">
+        <div class="single-pro-review-area mt-t-30 mg-b-15" style="margin: 40px 0px 0px 0px">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-payment-inner-st">
                             <ul id="myTabedu1" class="tab-review-design">
-                                <li class="active"><a href="#description">Capacitadores</a></li>
-                                <li><a href="#reviews">Registro capacitor</a></li>
-                                <li><a href="#INFORMATION">Asignar cursos</a></li>
+                                <li class="active"><a href="#registroplatica">Registro capacitador</a></li>
+                                <li><a href="#modificacion">Modificación de capacitadores</a></li>
+
                             </ul>
                             <div id="myTabContent" class="tab-content custom-product-edit">
-                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                <div class="product-tab-list tab-pane fade active in" id="registroplatica">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
-                                                <div id="dropzone1" class="pro-ad">
-                                                    <form action="/upload" class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload">
+                                                <div id="dropzone1" class="pro-ad add-professors">
+                                                    <form action="<?php echo e(route('registro')); ?>">
                                                         <div class="row">
-
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <div class="form-group">
-                                                                    <input name="firstname" type="text" class="form-control" placeholder="Nombre">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="firstname" type="text" class="form-control" placeholder="Apellido paterno">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="firstname" type="text" class="form-control" placeholder="Apellido materno">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="address" type="text" class="form-control" placeholder="Dirección">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="mobileno" type="number" class="form-control" placeholder="Telefono">
-                                                                </div>
 
                                                                 <div class="form-group">
-                                                                    <input name="postcode" id="postcode" type="text" class="form-control" placeholder="Curp">
+                                                                    <br>
+                                                                    <input name="nombre" id="nombre" type="text"
+                                                                           title="Nombre"
+                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->nombre); ?>" <?php endif; ?>
+                                                                           required="true"
+                                                                           class="form-control"
+                                                                           placeholder="Nombre">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="postcode" id="postcode" type="text" class="form-control" placeholder="RFC">
+                                                                    <input name="apat" id="apat" type="text"
+                                                                           title="Apellido paterno"
+                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->apellido_paterno); ?>" <?php endif; ?>
+                                                                           required="true"
+                                                                           class="form-control"
+                                                                           placeholder="Apellido paterno">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="finish" id="finish" type="text" class="form-control" placeholder="Correo Electronico">
+                                                                    <input name="amat" id="amat" type="text"
+                                                                           title="Apellido materno"
+                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->apellido_materno); ?>" <?php endif; ?>
+                                                                           required="true"
+                                                                           class="form-control"
+                                                                           placeholder="Apellido materno">
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <select name="genero" id="genero" class="form-control"
+                                                                            <?php if(isset($registro)): ?> value="<?php echo e($registro->genero); ?>" <?php endif; ?>>
+                                                                        <option value="none" selected="" disabled="" style="color: darkgrey;">Genero</option>
+                                                                        <option value="Masculino">Masculino</option>
+                                                                        <option value="Femenino">Femenino</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="postcode" id="postcode" type="text" class="form-control" placeholder="Password">
+                                                                    <select required='true' class="form-control select2"  name="estado" id="estado" <?php if(isset($registro)): ?> value="<?php echo e($registro->estado); ?>" <?php endif; ?>>
+                                                                        <option value="none" selected="" disabled="">Estado de nacimiento</option>
+                                                                        <?php $__currentLoopData = $cat_entidades; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $entidades): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e($entidades->cve_ent); ?>"> <?php echo e($entidades->nom_ent); ?></option>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select required='true' class="form-control select2"  name="municipio" id="municipio">
+                                                                        <option value="none" selected="" disabled="">Municipio</option>
+                                                                        <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e($municipios->cve_compuesta_ent_mun); ?>"> <?php echo e($municipios->nom_mun); ?></option>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                    </select>
                                                                 </div>
 
                                                             </div>
 
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
                                                                 <div class="form-group">
-                                                                    <input name="department" type="text" class="form-control" placeholder="Department">
-                                                                </div>
-                                                                <div class="form-group res-mg-t-15">
-                                                                    <textarea name="description" placeholder="Description"></textarea>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <select name="gender" class="form-control">
-																		<option value="none" selected="" disabled="">Genero</option>
-																		<option value="0">Masculino</option>
-																		<option value="1">Femenino</option>
-																	</select>
+                                                                    <span class="spantext" style="color: darkgrey;">Fecha de nacimiento</span>
+                                                                    <input name="fechanacimiento" id="fechanacimiento" type="date"
+                                                                           title="Fecha de nacimiento"
+                                                                           class="form-control"
+                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->fecha_nacimiento); ?>" <?php endif; ?>
+                                                                           required="true">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <select name="country" class="form-control">
-																			<option value="none" selected="" disabled="">Select country</option>
-																			<option value="0">India</option>
-																			<option value="1">Pakistan</option>
-																			<option value="2">Amerika</option>
-																			<option value="3">China</option>
-																			<option value="4">Dubai</option>
-																			<option value="5">Nepal</option>
-																		</select>
+                                                                    <input name="rfc" id="rfc" type="text"
+                                                                           onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()"
+                                                                           title="RFC"
+                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->rfc); ?>" <?php endif; ?>
+                                                                           class="form-control"
+                                                                           required="true" placeholder="RFC">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <select name="state" class="form-control">
-																			<option value="none" selected="" disabled="">Select state</option>
-																			<option value="0">Gujarat</option>
-																			<option value="1">Maharastra</option>
-																			<option value="2">Rajastan</option>
-																			<option value="3">Maharastra</option>
-																			<option value="4">Rajastan</option>
-																			<option value="5">Gujarat</option>
-																		</select>
+                                                                    <input name="correo" id="correo" type="email"
+                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->correo); ?>" <?php endif; ?>
+                                                                           class="form-control"
+                                                                           required="true" placeholder="Correo">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <select name="city" class="form-control">
-																			<option value="none" selected="" disabled="">Select city</option>
-																			<option value="0">Surat</option>
-																			<option value="1">Baroda</option>
-																			<option value="2">Navsari</option>
-																			<option value="3">Baroda</option>
-																			<option value="4">Surat</option>
-																		</select>
+                                                                    <input name="telefono" id="telefono" type="number"
+                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->telefono); ?>" <?php endif; ?>
+                                                                           class="form-control"
+                                                                           placeholder="Teléfono">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <input name="usuario"  type="text"
+                                                                           <?php if(isset($registro)): ?> required="true" value="<?php echo e($registro->escolaridad); ?>" <?php endif; ?>
+                                                                           class="form-control"
+                                                                           placeholder="Usuario">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="website" type="text" class="form-control" placeholder="Website URL">
+
+                                                                    <input name="ocupacion"  type="text"
+                                                                           <?php if(isset($registro)): ?> required="true" value="<?php echo e($registro->ocupacion); ?>" <?php endif; ?>
+                                                                           class="form-control"
+                                                                           placeholder="Contraseña">
                                                                 </div>
+
+
                                                             </div>
                                                         </div>
+
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="payment-adress">
-                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Enviar</button>
+                                                                    <br>
+                                                                    <button type="submit"
+                                                                            class="btn btn-primary waves-effect waves-light">
+                                                                        Guardar
+                                                                    </button>
+                                                                    <input type="hidden" name="_token" id="csrf-token" value="<?php echo e(csrf_token()); ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -120,62 +144,73 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-tab-list tab-pane fade" id="reviews">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <form id="acount-infor" action="#" class="acount-infor">
-                                                            <div class="devit-card-custom">
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control" name="email" placeholder="Email">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="phoneno" type="number" class="form-control" placeholder="Phone">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="password" type="password" class="form-control" placeholder="Password">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="confarmpassword" type="password" class="form-control" placeholder="Confirm Password">
-                                                                </div>
-                                                                <a href="#" class="btn btn-primary waves-effect waves-light">Enviar</a>
+
+
+
+                                <!-- Tabla de registros capacitores   -->
+                                <div class="product-tab-list tab-pane fade data-table-area mg-b-15" id="modificacion">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="sparkline13-list">
+                                                    <div class="sparkline13-hd">
+                                                        <div class="main-sparkline13-hd">
+                                                            <!--<h1>Projects <span class="table-project-n">Data</span> Table</h1>-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="sparkline13-graph">
+                                                        <div class="datatable-dashv1-list custom-datatable-overright">
+                                                            <div id="toolbar">
+                                                                <select class="form-control dt-tb">
+                                                                    <option value="all">Exportar todo</option>
+                                                                    <option value="selected">Exportar Seleccionados
+                                                                    </option>
+                                                                </select>
                                                             </div>
-                                                        </form>
+
+                                                            <table id="table" data-toggle="table"
+                                                                   data-pagination="true"
+                                                                   data-show-columns="true"
+                                                                   data-show-pagination-switch="true"
+                                                                   data-show-toggle="true" data-resizable="true"
+                                                                   data-cookie="true"
+                                                                   data-cookie-id-table="saveId"
+                                                                   data-show-export="true"
+                                                                   data-click-to-select="true"
+                                                                   data-toolbar="#toolbar">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th data-field="state" data-checkbox="true"></th>
+                                                                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1" >Nombre</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Apellido paterno</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Apellido materno</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Genero</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Estado de nacimiento</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Municipio</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Fecha de nacimiento</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >RFC</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Correo</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Teléfono</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Usuario</th>
+                                                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Fecha de registro</th>
+                                                                </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-tab-list tab-pane fade" id="INFORMATION">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-												<div class="row">
-													<div class="col-lg-12">
-														<div class="devit-card-custom">
-															<div class="form-group">
-																<input type="url" class="form-control" placeholder="Facebook URL">
-															</div>
-															<div class="form-group">
-																<input type="url" class="form-control" placeholder="Twitter URL">
-															</div>
-															<div class="form-group">
-																<input type="url" class="form-control" placeholder="Google Plus">
-															</div>
-															<div class="form-group">
-																<input type="url" class="form-control" placeholder="Linkedin URL">
-															</div>
-															<button type="submit" class="btn btn-primary waves-effect waves-light">Enviar</button>
-														</div>
-													</div>
-												</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- Tabla de registros de evaluación -->
+
+
+
+
+
+
+
                             </div>
                         </div>
                     </div>
