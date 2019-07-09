@@ -33,7 +33,7 @@ class BuscarEvalCapacitadorController extends Controller
      {
          $cat_capacitador = Cat_capacitador::select('id_capacitador', 'nom_cap', 'apellido_paterno', 'apellido_materno')->orderBy('nom_cap', 'ASC')
              ->get();
-         //$busqueda = EvaluacionCapacitador::all()->paginate(25);
+         $busqueda = EvaluacionCapacitador::paginate(25);
 
          $fecha1= Input::get('fecha1');
          $fecha2= Input::get('fecha2');
@@ -48,6 +48,6 @@ class BuscarEvalCapacitadorController extends Controller
          }
 
 
-         return view('BuscarEvaCapacitadores', compact( 'cat_capacitador'));
+         return view('BuscarEvaCapacitadores', compact( 'cat_capacitador', 'busqueda'));
      }
 }

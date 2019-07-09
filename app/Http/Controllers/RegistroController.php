@@ -69,13 +69,14 @@ class RegistroController extends BaseController
                     ->join('cat_municipios','cat_municipios.cve_compuesta_ent_mun', '=', 'registroplatica.cve_compuesta_ent_mun')
                     ->get();
 
-                //dd($registro);
+                //$registro = new RegistroPlatica;
 
                 //dd(request()->all());
+                //dd($detalle_registrop);
 
                 Registro::create($request,request()->all());
-                //dd($registro);
 
+                $dd(request()->ALL);
 
                 $alert = new \stdClass();
                 $alert->message = 'Los datos se guardaron correctamente';

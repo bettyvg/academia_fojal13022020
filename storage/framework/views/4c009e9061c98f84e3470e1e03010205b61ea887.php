@@ -53,8 +53,6 @@
                                                                         <div class="col-lg-12">
                                                                             <div class="col-lg-2"><label>Desde</label></div>
                                                                             <div class="col-lg-4">
-                                                                                <?php if(isset($desde)==false): ?>{$desde = $hasta;}
-                                                                                <?php endif; ?>
                                                                         <input name="fecha1" id="fecha1"
                                                                                type="date"
                                                                                class="form-control"
@@ -72,8 +70,6 @@
                                                                                class="form-control"
                                                                                placeholder="Fecha del curso"
                                                                                value="<?php echo e(old('fecha2')); ?>">
-                                                                                <?php if(isset($desde)==false): ?>{$hasta = $desde;}
-                                                                                <?php endif; ?>
                                                                             </div>
                                                                         </div>
 
@@ -148,14 +144,14 @@
                                                                     </div>
                                                                 </div>
                                                                 <br><br>
-                                                                <table class="table table-bordered table-hover dataTable"  id="tabla_accionistas">
+                                                               <!-- <table class="table table-bordered table-hover dataTable"  id="tabla_accionistas">
                                                                     <tr role="row">
                                                                         <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="text-align: center">Total Excelente</th>
                                                                         <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="text-align: center">Total Buena</th>
                                                                         <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="text-align: center">Total Regular</th>
                                                                         <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="text-align: center">Total mala</th>
                                                                     </tr>
-                                                                </table>
+                                                                </table>-->
                                                             </div>
                                                         </div>
                                                     </div>

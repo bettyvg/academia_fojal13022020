@@ -50,12 +50,12 @@ class EvalCapacitadorController extends Controller
         try {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-                EvaluacionCapacitador::create(request()->all());
+                EvaluacionCapacitador::creating(request()->all());
 
                 $alert2 = new \stdClass();
                 $alert2->message = 'La evaluación se envio correctamente';
                 return View::make('EvaluacionCapacitadores', array(
-                    'alert' => $alert2, 'cat_municipios' => $cat_municipios, 'cat_capacitador' => $cat_capacitador, 'cat_instituciones' => $cat_instituciones, 'busqueda'=>$busqueda));
+                    'alert2' => $alert2, 'cat_municipios' => $cat_municipios, 'cat_capacitador' => $cat_capacitador, 'cat_instituciones' => $cat_instituciones, 'busqueda'=>$busqueda));
 
                 //return back();
             } else {
