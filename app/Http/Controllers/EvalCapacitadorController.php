@@ -50,7 +50,10 @@ class EvalCapacitadorController extends Controller
         try {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-                EvaluacionCapacitador::creating(request()->all());
+
+                EvaluacionCapacitador::create(request()->all());
+
+
 
                 $alert2 = new \stdClass();
                 $alert2->message = 'La evaluación se envio correctamente';

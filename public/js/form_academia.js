@@ -32,55 +32,45 @@ $(document).ready(function () {
         });
     });
 
-    /* busqueda*/
-    $("#fecha1").change(function () {
-        var desde = $("#fecha1").val();
-        var hasta = $("#fecha2").val();
+    /*Cambios de clase*/
+    $(".MonitoreoEvalucion").change(function () {
+        var puntualidad = $("#puntualidad").val();
+        var dominiotema = $("#dominiotema").val();
+        var exposicion = $("#exposicion").val();
+        var ejemplos = $("#ejemplos").val();
+        var ejercicios = $("#ejercicios").val();
+        var empatia = $("#empatiagrupo").val();
+        var fluidez = $("#fluidez").val();
+        var todos_temas = $("#todostemas").val();
+        var cap_resolucion = $("#capresolver").val();
+
+        var Monitoreolista = [puntualidad,dominiotema,exposicion,ejemplos,ejercicios,empatia,fluidez,todos_temas,cap_resolucion];
+
+        for(var contar = 0; contar < Monitoreolista.length; contar++)
+        {
+            console.log(Monitoreolista[contar]);
+        }
+
 
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: "./BuscarEvaCapacitadores/",
+            url: "./EvaluacionCapacitadores/",
             dataType : 'json',
             type: "POST",
-            data:'fecha1='+desde+'fecha2='+hasta,
+            data:,
             success: function (data) {
-                $('#tbl_buscar').empty();
-                /*$("#tbl_buscar").append('<option value="">Seleccionar puesto..</option>');
-                for (var i = 0; i < data.length; i++) {
-                    $("#puesto").append('<option value="' + data[i].id_puesto + '">' + data[i].nom_puesto + '</option>');
-                }*/
+                if()
+                $('#monitoreoeva2').empty();
+                $("#monitoreoeva2").append();
+
+                }
             }
 
         });
         return false;
     });
-
-    $("#fecha2").change(function () {
-        var desde = $("#fecha1").val();
-        var hasta = $("#fecha2").val();
-
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: "./BuscarEvaCapacitadores/",
-            dataType : 'json',
-            type: "POST",
-            data:'fecha1='+desde+'fecha2='+hasta,
-            success: function (data) {
-                $('#tbl_buscar').empty();
-                /*$("#tbl_buscar").append('<option value="">Seleccionar puesto..</option>');
-                for (var i = 0; i < data.length; i++) {
-                    $("#puesto").append('<option value="' + data[i].id_puesto + '">' + data[i].nom_puesto + '</option>');
-                }*/
-            }
-
-        });
-        return false;
-    });
-
 
 
 });

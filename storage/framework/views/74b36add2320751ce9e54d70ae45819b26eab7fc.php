@@ -1,32 +1,21 @@
 <?php $__env->startSection('content'); ?>
 
     <section>
-        <form action="<?php echo e(route('registroplatica')); ?>" method="post" class="form-horizontal">
-            <?php if(isset($alert)): ?>
-                <div class="row" style="padding: 10px; margin: 30px 20px 0px 20px">
-                    <div class="col-12">
-                        <div  class="alert alert-info">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <?php echo e($alert->message); ?>
+        <?php if(isset($alert)): ?>
+            <div class="row" style="padding: 10px; margin: 30px 20px 0px 20px">
+                <div class="col-12">
+                    <div  class="alert alert-info">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <?php echo e($alert->message); ?>
 
                     </div>
                 </div>
-            <?php endif; ?>
-
-                <?php if(isset($alert2)): ?>
-                    <div class="row" style="padding: 10px;">
-                        <div class="col-12">
-                            <div class="alert alert-<?php echo e($alert2->type); ?>">
-                                <button class="close" data-dismiss="alert"><span>&times;</span></button>
-                                <?php echo e($alert2->message); ?>
-
-                            </div>
-                        </div>
-                    </div>
-
                 <?php endif; ?>
+        <form action="<?php echo e(route('registroplatica')); ?>" method="post" class="form-horizontal">
+
+
 
              <div class="single-pro-review-area mt-t-30 mg-b-15" style="margin: 40px 0px 0px 0px">
              <div class="container-fluid ">

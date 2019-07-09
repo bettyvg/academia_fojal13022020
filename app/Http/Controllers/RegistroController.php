@@ -74,12 +74,13 @@ class RegistroController extends BaseController
                 //dd(request()->all());
                 //dd($detalle_registrop);
 
-                Registro::create($request,request()->all());
+                Registro::create(request()->all());
 
-                $dd(request()->ALL);
+                //$dd(request()->ALL);
 
                 $alert = new \stdClass();
                 $alert->message = 'Los datos se guardaron correctamente';
+                $alert->type = 'success';
                 return View::make('registroplatica', array(
                     'alert' => $alert,
                     'cat_municipios' => $cat_municipios,

@@ -45,7 +45,7 @@ class EvaluacionController extends BaseController
                 $cat_ejecutivos = Cat_ejecutivos::select('id_ejecutivo','nombre', 'apellido_paterno', 'apellido_materno')->orderBy('id_ejecutivo', 'ASC')->get();
                 $detalle_evaluacion = evaluacion::all();
 
-                evaluacion::creating(request($request)->all());
+                evaluacion::create(request($request)->all());
 
 
                 $alert = new \stdClass();

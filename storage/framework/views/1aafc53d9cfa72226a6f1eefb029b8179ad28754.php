@@ -2,18 +2,7 @@
     <section>
         <form action="<?php echo e(route('EvaluacionCapacitadores')); ?>" method="post" class="form-horizontal">
             <?php echo csrf_field(); ?>
-                    <?php if(isset($alert2)): ?>
-                        <div class="row" style="padding: 10px;">
-                            <div class="col-12">
-                                <div class="alert alert-<?php echo e($alert2->type); ?>">
-                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
-                                    <?php echo e($alert2->message); ?>
 
-                                </div>
-                            </div>
-                        </div>
-
-                    <?php endif; ?>
                     <div class="single-pro-review-area mt-t-30 mg-b-15 ">
                         <div class="container-fluid" style="margin: 40px 0px 0px 0px">
                             <div class="row">
@@ -204,7 +193,17 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="text" readonly="readonly" class="form-control" name="monitoreoeva" id="monitoreoev" placeholder="Monitoreo">
+                                                                        <input id="monitoreoeva1" name="monitoreoeva1" type="hidden">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select  required="true" class="form-control "  name="monitoreoeva2" id="monitoreolog1">
+                                                                            <option value="">Monitoreo 1 malo y 1 regular4</option>
+                                                                            <option value="Excelente">Excelente</option>
+                                                                            <option value="Bueno">Bueno</option>
+                                                                            <option value="Regular">Regular</option>
+                                                                            <option value="Malo">Malo</option>
+                                                                            <option value="x">Ninguno</option>
+                                                                        </select>
                                                                     </div>
                                                                     <br>
                                                                 </div>
@@ -238,11 +237,8 @@
                                                                     <div class="form-group">
                                                                         <select  required="true" class="form-control "  name="monitoreolog1" id="monitoreolog1">
                                                                             <option value="">Monitoreo 1 malo y 1 regular4</option>
-                                                                            <option value="Excelente">Excelente</option>
-                                                                            <option value="Bueno">Bueno</option>
-                                                                            <option value="Regular">Regular</option>
-                                                                            <option value="Malo">Malo</option>
-                                                                            <option value="x">Ninguno</option>
+                                                                            <option value="Monitoriar">Monitoriar</option>
+                                                                            <option value="Normal">Normal</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
