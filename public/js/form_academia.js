@@ -11,7 +11,7 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             url: "./get_puesto/" + id_area,
-            dataType : 'json',
+            dataType: 'json',
             type: "POST",
             data: id_area,
             contentType: false,
@@ -32,7 +32,7 @@ $(document).ready(function () {
         });
     });
 
-    /*Cambios de clase*/
+    /*Evaluación Capacitador cuente cuantas variables tienen Malo y Regular*/
     $(".MonitoreoEvalucion").change(function () {
         var puntualidad = $("#puntualidad").val();
         var dominiotema = $("#dominiotema").val();
@@ -44,33 +44,88 @@ $(document).ready(function () {
         var todos_temas = $("#todostemas").val();
         var cap_resolucion = $("#capresolver").val();
 
-        var Monitoreolista = [puntualidad,dominiotema,exposicion,ejemplos,ejercicios,empatia,fluidez,todos_temas,cap_resolucion];
 
-        for(var contar = 0; contar < Monitoreolista.length; contar++)
+        var Monitoreolista = [puntualidad, dominiotema, exposicion, ejemplos, ejercicios, empatia, fluidez, todos_temas, cap_resolucion];
+
+        var malo = 0;
+        var regular = 0;
+
+        for (var contar = 0; contar < Monitoreolista.length; contar++) {
+            if (Monitoreolista[contar] == 'Malo') {
+                malo++;
+            }
+
+            if (Monitoreolista[contar] == 'Regular') {
+                regular++;
+            }
+        }
+
+        if (malo > 0 || regular > 0) {
+            $("#monitoreoeva1").val('Monitoriar');
+        }
+        else
         {
-            console.log(Monitoreolista[contar]);
+            $("#monitoreoeva1").val('Adecuado');
+        }
+
+        if (malo > 2 || regular > 2) {
+            $("#monitoreoeva2").val('Monitoriar');
+        }
+        else
+        {
+            $("#monitoreoeva2").val('Adecuado');
         }
 
 
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: "./EvaluacionCapacitadores/",
-            dataType : 'json',
-            type: "POST",
-            data:,
-            success: function (data) {
-                if()
-                $('#monitoreoeva2').empty();
-                $("#monitoreoeva2").append();
+    });
 
-                }
+    /*Evaluación Capacitador cuente cuantas variables tienen Malo y Regular*/
+    $(".MonitoreoEvalucion").change(function () {
+        var puntualidad = $("#puntualidad").val();
+        var dominiotema = $("#dominiotema").val();
+        var exposicion = $("#exposicion").val();
+        var ejemplos = $("#ejemplos").val();
+        var ejercicios = $("#ejercicios").val();
+        var empatia = $("#empatiagrupo").val();
+        var fluidez = $("#fluidez").val();
+        var todos_temas = $("#todostemas").val();
+        var cap_resolucion = $("#capresolver").val();
+
+
+        var Monitoreolista = [puntualidad, dominiotema, exposicion, ejemplos, ejercicios, empatia, fluidez, todos_temas, cap_resolucion];
+
+        var malo = 0;
+        var regular = 0;
+
+        for (var contar = 0; contar < Monitoreolista.length; contar++) {
+            if (Monitoreolista[contar] == 'Malo') {
+                malo++;
             }
 
-        });
-        return false;
+            if (Monitoreolista[contar] == 'Regular') {
+                regular++;
+            }
+        }
+
+        if (malo > 0 || regular > 0) {
+            $("#monitoreoeva1").val('Monitorear');
+        }
+        else
+        {
+            $("#monitoreoeva1").val('Adecuado');
+        }
+
+        if (malo > 2 || regular > 2) {
+            $("#monitoreoeva2").val('Monitorear');
+        }
+        else
+        {
+            $("#monitoreoeva2").val('Adecuado');
+        }
+
+
     });
+
 
 
 });

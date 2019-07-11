@@ -100,7 +100,7 @@
 
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="puntualidad" id="puntualidad">
+                                                                        <select  required="true" class="form-control MonitoreoEvalucion"  name="puntualidad" id="puntualidad">
                                                                             <option value="">Puntualidad..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -110,7 +110,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="dominiotema" id="dominiotema">
+                                                                        <select  required="true" class="form-control MonitoreoEvalucion"  name="dominiotema" id="dominiotema">
                                                                             <option value="">Dominio del tema..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -120,7 +120,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="exposicion" id="exposicion">
+                                                                        <select  required="true" class="form-control MonitoreoEvalucion"  name="exposicion" id="exposicion">
                                                                             <option value="">Técnica de exposición..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -130,7 +130,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="ejemplos" id="ejemplos">
+                                                                        <select  required="true" class="form-control MonitoreoEvalucion"  name="ejemplos" id="ejemplos">
                                                                             <option value="">Ejemplos aplicados a las empresas ..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -140,7 +140,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="ejercicios" id="ejercicios">
+                                                                        <select  required="true" class="form-control MonitoreoEvalucion"  name="ejercicios" id="ejercicios">
                                                                             <option value="">Ejercicios al finalizar cada tema..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -149,11 +149,12 @@
                                                                             <option value="x">Ninguno</option>
                                                                         </select>
                                                                     </div>
+
                                                                     <br>
                                                                 </div>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="empatiagrupo" id="empatiagrupo">
+                                                                        <select  required="true" class="form-control MonitoreoEvalucion"  name="empatiagrupo" id="empatiagrupo">
                                                                             <option value="">Empatía con el grupo..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -163,7 +164,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="fluidez" id="fluidez">
+                                                                        <select  required="true" class="form-control MonitoreoEvalucion"  name="fluidez" id="fluidez">
                                                                             <option value="">Fluidez para hablar..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -173,7 +174,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="todostemas" id="todostemas">
+                                                                        <select  required="true" class="form-control MonitoreoEvalucion"  name="todostemas" id="todostemas">
                                                                             <option value="">El capacitador impartió todos los temas..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -183,7 +184,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="capresolver" id="capresolver">
+                                                                        <select  required="true" class="form-control MonitoreoEvalucion"  name="capresolver" id="capresolver">
                                                                             <option value="">Capacidad de resolver preguntas sobre el tema que impartió..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -192,19 +193,17 @@
                                                                             <option value="x">Ninguno</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <input id="monitoreoeva1" name="monitoreoeva1" type="hidden">
+                                                                    <div class="form-group ">
+                                                                        <div class="form-group col-lg-6" >
+                                                                            <label for="formGroupExampleInput">Monitoreo 1 malo y 1 regular</label>
+                                                                            <input type="text" id="monitoreoeva1" name="monitoreoeva1" class="form-control" readonly>
+                                                                        </div>
+                                                                        <div class="form-group col-lg-6">
+                                                                            <label for="formGroupExampleInput">Monitoreo 3 malos y 3 regulares</label>
+                                                                            <input type="text" id="monitoreoeva2" name="monitoreoeva2" class="form-control" readonly>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="monitoreoeva2" id="monitoreolog1">
-                                                                            <option value="">Monitoreo 1 malo y 1 regular4</option>
-                                                                            <option value="Excelente">Excelente</option>
-                                                                            <option value="Bueno">Bueno</option>
-                                                                            <option value="Regular">Regular</option>
-                                                                            <option value="Malo">Malo</option>
-                                                                            <option value="x">Ninguno</option>
-                                                                        </select>
-                                                                    </div>
+                                                                    <br>
                                                                     <br>
                                                                 </div>
 
@@ -431,7 +430,7 @@
 
             </div>
         <?php endif; ?>
-
+        <script src="<?php echo e(asset('js/form_academia.js')); ?>" charset="utf-8"></script>
     </section>
 <?php $__env->stopSection(); ?>
 
