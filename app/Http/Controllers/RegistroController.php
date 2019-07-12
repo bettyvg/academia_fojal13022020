@@ -102,12 +102,12 @@ class RegistroController extends BaseController
 
 
         }catch (Exception $e) {
-            $alert2 = new \stdClass();
-            $alert2->message = 'Ocurrió un error, por favor, contacte al administrador.';
-            $alert2->type = 'danger';
+            $alert = new \stdClass();
+            $alert->message = 'Ocurrió un error, por favor, contacte al administrador.';
+            $alert->type = 'danger';
             return View::make('registroplatica',
             array(
-                'alert' => $alert2)
+                'alert' => $alert)
             );
         }
 

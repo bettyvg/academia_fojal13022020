@@ -172,7 +172,7 @@ class UsuariosController extends BaseController {
 
     }
 
-    public function edit($id){
+    public function edit22($id){
 
         $user=Usuario::find($id);
 
@@ -193,7 +193,7 @@ class UsuariosController extends BaseController {
             'detalle_registrousuarios' => $detalle_registrousuarios,
             'cat_perfiles' => $cat_perfiles))->with('user', $user);
 
-        dd($user);
+
     }
 
 

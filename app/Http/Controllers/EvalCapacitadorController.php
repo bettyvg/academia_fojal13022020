@@ -55,20 +55,20 @@ class EvalCapacitadorController extends Controller
 
 
 
-                $alert2 = new \stdClass();
-                $alert2->message = 'La evaluación se envio correctamente';
-                $alert2->type = 'success';
+                $alert = new \stdClass();
+                $alert->message = 'La evaluación se envio correctamente';
+                $alert->type = 'success';
                 return View::make('EvaluacionCapacitadores', array(
-                    'alert2' => $alert2, 'cat_municipios' => $cat_municipios, 'cat_capacitador' => $cat_capacitador, 'cat_instituciones' => $cat_instituciones, 'busqueda'=>$busqueda));
+                    'alert' => $alert, 'cat_municipios' => $cat_municipios, 'cat_capacitador' => $cat_capacitador, 'cat_instituciones' => $cat_instituciones, 'busqueda'=>$busqueda));
 
                 //return back();
             } else {
 
             }
         } catch (Exception $e) {
-            $alert2 = new \stdClass();
-            $alert2->message = 'Ocurrió un error, por favor, contacte al administrador.';
-            $alert2->type = 'danger';
+            $alert = new \stdClass();
+            $alert->message = 'Ocurrió un error, por favor, contacte al administrador.';
+            $alert->type = 'danger';
             return View::make('EvaluacionCapacitadores',
                 array(
                     'alert' => $alert2, 'cat_municipios' => $cat_municipios, 'cat_capacitador' => $cat_capacitador,'busqueda'=>$busqueda)
