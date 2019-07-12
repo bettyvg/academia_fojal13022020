@@ -61,7 +61,7 @@ $(document).ready(function () {
         }
 
         if (malo > 0 || regular > 0) {
-            $("#monitoreoeva1").val('Monitoriar');
+            $("#monitoreoeva1").val('Monitorear');
         }
         else
         {
@@ -69,7 +69,7 @@ $(document).ready(function () {
         }
 
         if (malo > 2 || regular > 2) {
-            $("#monitoreoeva2").val('Monitoriar');
+            $("#monitoreoeva2").val('Monitorear');
         }
         else
         {
@@ -79,20 +79,12 @@ $(document).ready(function () {
 
     });
 
-    /*Evaluación Capacitador cuente cuantas variables tienen Malo y Regular*/
-    $(".MonitoreoEvalucion").change(function () {
-        var puntualidad = $("#puntualidad").val();
-        var dominiotema = $("#dominiotema").val();
-        var exposicion = $("#exposicion").val();
-        var ejemplos = $("#ejemplos").val();
-        var ejercicios = $("#ejercicios").val();
-        var empatia = $("#empatiagrupo").val();
-        var fluidez = $("#fluidez").val();
-        var todos_temas = $("#todostemas").val();
-        var cap_resolucion = $("#capresolver").val();
+    /*Evaluación Capacitador cuente cuantas variables tienen Malo y Regular Logistica*/
+    $(".MonitoreoLogistica").change(function () {
+        var lugar = $("#lugar").val();
+        var equipo = $("#equipo").val();
 
-
-        var Monitoreolista = [puntualidad, dominiotema, exposicion, ejemplos, ejercicios, empatia, fluidez, todos_temas, cap_resolucion];
+        var Monitoreolista = [lugar, equipo];
 
         var malo = 0;
         var regular = 0;
@@ -108,19 +100,102 @@ $(document).ready(function () {
         }
 
         if (malo > 0 || regular > 0) {
-            $("#monitoreoeva1").val('Monitorear');
+            $("#monitoreolog1").val('Monitorear');
         }
         else
         {
-            $("#monitoreoeva1").val('Adecuado');
+            $("#monitoreolog1").val('Adecuado');
+        }
+
+        if (malo > 1 || regular > 1) {
+            $("#monitoreolog2").val('Monitorear');
+        }
+        else
+        {
+            $("#monitoreolog2").val('Adecuado');
+        }
+
+    });
+
+        /*Evaluación Capacitador cuente cuantas variables tienen Malo y Regular*/
+        $(".MonitoreoContenido").change(function () {
+            var objetivoscurso = $("#objetivoscurso").val();
+            var contenidocurso = $("#contenidocurso").val();
+            var contenidocuaderno = $("#contenidocuaderno").val();
+            var apoyo = $("#apoyo").val();
+
+
+
+            var Monitoreolista = [objetivoscurso,contenidocurso,contenidocuaderno,apoyo];
+
+            var malo = 0;
+            var regular = 0;
+
+            for (var contar = 0; contar < Monitoreolista.length; contar++) {
+                if (Monitoreolista[contar] == 'Malo') {
+                    malo++;
+                }
+
+                if (Monitoreolista[contar] == 'Regular') {
+                    regular++;
+                }
+            }
+
+            if (malo > 0 || regular > 0) {
+                $("#monitoreocontenido1").val('Monitorear');
+            }
+            else
+            {
+                $("#monitoreocontenido1").val('Adecuado');
+            }
+
+            if (malo > 2 || regular > 2) {
+                $("#monitoreocontenido2").val('Monitorear');
+            }
+            else
+            {
+                $("#monitoreocontenido2").val('Adecuado');
+            }
+
+
+    });
+
+    /*Evaluación Capacitador cuente cuantas variables tienen Malo y Regular Organizacion*/
+    $(".MonitoreoOrganizacion").change(function () {
+        var registroorg = $("#registroorg").val();
+        var atencionorg = $("#atencionorg").val();
+        var registrocursos = $("#registrocursos").val();
+
+
+        var Monitoreolista = [registroorg,atencionorg,registrocursos];
+
+        var malo = 0;
+        var regular = 0;
+
+        for (var contar = 0; contar < Monitoreolista.length; contar++) {
+            if (Monitoreolista[contar] == 'Malo') {
+                malo++;
+            }
+
+            if (Monitoreolista[contar] == 'Regular') {
+                regular++;
+            }
+        }
+
+        if (malo > 0 || regular > 0) {
+            $("#monitoreoorg1").val('Monitorear');
+        }
+        else
+        {
+            $("#monitoreoorg1").val('Adecuado');
         }
 
         if (malo > 2 || regular > 2) {
-            $("#monitoreoeva2").val('Monitorear');
+            $("#monitoreoorg2").val('Monitorear');
         }
         else
         {
-            $("#monitoreoeva2").val('Adecuado');
+            $("#monitoreoorg2").val('Adecuado');
         }
 
 

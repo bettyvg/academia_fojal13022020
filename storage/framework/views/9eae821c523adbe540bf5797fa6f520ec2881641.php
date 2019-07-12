@@ -108,6 +108,7 @@ $user = Session::get('usuario');
                                 <li><a title="Test ubica tu financiamiento" href="<?php echo e(route('testubica')); ?>"><span class="mini-sub-pro">Test ubica</span></a></li>
                                 <li><a title="Evaluación de la plática informativa" href="<?php echo e(route('evaluacionplaticainfo')); ?>"><span class="mini-sub-pro">Evaluación agentes</span></a></li>
                                 <li><a title="Evaluación de la capacitadores" href="<?php echo e(route('EvaluacionCapacitadores')); ?>"><span class="mini-sub-pro">Encuesta</span></a></li>
+                                <li><a title="Evaluación de la capacitadores" href="<?php echo e(route('BuscarEvaCapacitadores')); ?>"><span class="mini-sub-pro">Detalle encuestas</span></a></li>
 
                             </ul>
                         </li>

@@ -57,6 +57,7 @@ class EvalCapacitadorController extends Controller
 
                 $alert2 = new \stdClass();
                 $alert2->message = 'La evaluación se envio correctamente';
+                $alert2->type = 'success';
                 return View::make('EvaluacionCapacitadores', array(
                     'alert2' => $alert2, 'cat_municipios' => $cat_municipios, 'cat_capacitador' => $cat_capacitador, 'cat_instituciones' => $cat_instituciones, 'busqueda'=>$busqueda));
 

@@ -1,5 +1,17 @@
 <?php $__env->startSection('content'); ?>
     <section>
+        <?php if(isset($alert)): ?>
+            <div class="row" style="padding: 10px; margin: 30px 20px 0px 20px">
+                <div class="col-12">
+                    <div  class="alert alert-info">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <?php echo e($alert->message); ?>
+
+                    </div>
+                </div>
+                <?php endif; ?>
         <form action="<?php echo e(route('EvaluacionCapacitadores')); ?>" method="post" class="form-horizontal">
             <?php echo csrf_field(); ?>
 
@@ -10,7 +22,7 @@
                                     <div class="product-payment-inner-st">
                                         <ul id="myTabedu1" class="tab-review-design">
                                             <li class="active"><a href="#description">Encuesta de satisfacción</a></li>
-                                            <li><a href="<?php echo e(route('BuscarEvaCapacitadores')); ?>">Detalle encuestas</a></li>
+
                                         </ul>
                                         <div id="myTabContent" class="tab-content custom-product-edit">
                                             <div class="product-tab-list tab-pane fade active in" id="description">
@@ -149,7 +161,6 @@
                                                                             <option value="x">Ninguno</option>
                                                                         </select>
                                                                     </div>
-
                                                                     <br>
                                                                 </div>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -211,7 +222,7 @@
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="lugar" id="lugar">
+                                                                        <select  required="true" class="form-control MonitoreoLogistica"  name="lugar" id="lugar">
                                                                             <option value="">Servicio del lugar en dónde se realizó el curso..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -221,7 +232,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="equipo" id="equipo">
+                                                                        <select  required="true" class="form-control MonitoreoLogistica"  name="equipo" id="equipo">
                                                                             <option value="">Equipo y herramientas para la exposición del capacitador...</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -233,32 +244,24 @@
                                                                     <br>
                                                                 </div>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                    <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="monitoreolog1" id="monitoreolog1">
-                                                                            <option value="">Monitoreo 1 malo y 1 regular4</option>
-                                                                            <option value="Monitoriar">Monitoriar</option>
-                                                                            <option value="Normal">Normal</option>
-                                                                        </select>
+                                                                    <div class="form-group ">
+                                                                        <div class="form-group col-lg-6" >
+                                                                            <label for="formGroupExampleInput">Monitoreo 1 malo y 1 regular</label>
+                                                                            <input type="text" id="monitoreolog1" name="monitoreolog1" class="form-control" readonly>
+                                                                        </div>
+                                                                        <div class="form-group col-lg-6">
+                                                                            <label for="formGroupExampleInput">Monitoreo 2 malos y 2 regulares</label>
+                                                                            <input type="text" id="monitoreolog2" name="monitoreolog2" class="form-control" readonly>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="monitoreolog2" id="monitoreolog2">
-                                                                            <option value="">Monitoreo 3 malos o 3 regulares5..</option>
-                                                                            <option value="Excelente">Excelente</option>
-                                                                            <option value="Bueno">Bueno</option>
-                                                                            <option value="Regular">Regular</option>
-                                                                            <option value="Malo">Malo</option>
-                                                                            <option value="x">Ninguno</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <br>
+                                                                    <br><br><br>
                                                                 </div>
 
                                                                 <h4>Contenido y materiales</h4>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="objetivoscurso" id="objetivoscurso">
+                                                                        <select  required="true" class="form-control MonitoreoContenido"  name="objetivoscurso" id="objetivoscurso">
                                                                             <option value="">Considera que se cumplieron los objetivos del curso..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -268,7 +271,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="contenidocurso" id="contenidocurso">
+                                                                        <select  required="true" class="form-control MonitoreoContenido"  name="contenidocurso" id="contenidocurso">
                                                                             <option value="">El contenido del curso se puede aplicar...</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -278,7 +281,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="contenidocuaderno" id="contenidocuaderno">
+                                                                        <select  required="true" class="form-control MonitoreoContenido"  name="contenidocuaderno" id="contenidocuaderno">
                                                                             <option value="">Considera adecuado el contenido de los cuadernos de trabajo ..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -287,12 +290,8 @@
                                                                             <option value="x">Ninguno</option>
                                                                         </select>
                                                                     </div>
-
-                                                                    <br>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="apoyo" id="apoyo">
+                                                                        <select  required="true" class="form-control MonitoreoContenido"  name="apoyo" id="apoyo">
                                                                             <option value="">Como fuente de apoyo a la presentación..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -301,34 +300,29 @@
                                                                             <option value="x">Ninguno</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="monitoreocontenido1" id="monitoreocontenido1">
-                                                                            <option value="">Monitoreo 1 malo y 1 regular4</option>
-                                                                            <option value="Excelente">Excelente</option>
-                                                                            <option value="Bueno">Bueno</option>
-                                                                            <option value="Regular">Regular</option>
-                                                                            <option value="Malo">Malo</option>
-                                                                            <option value="x">Ninguno</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="monitoreocontenido2" id="monitoreocontenido2">
-                                                                            <option value="">Monitoreo 3 malos o 3 regulares5..</option>
-                                                                            <option value="Excelente">Excelente</option>
-                                                                            <option value="Bueno">Bueno</option>
-                                                                            <option value="Regular">Regular</option>
-                                                                            <option value="Malo">Malo</option>
-                                                                            <option value="x">Ninguno</option>
-                                                                        </select>
-                                                                    </div>
-
                                                                     <br>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                                                                    <div class="form-group ">
+                                                                        <div class="form-group col-lg-6" >
+                                                                            <label for="formGroupExampleInput">Monitoreo 1 malo y 1 regular</label>
+                                                                            <input type="text" id="monitoreocontenido1" name="monitoreocontenido1" class="form-control" readonly>
+                                                                        </div>
+                                                                        <div class="form-group col-lg-6">
+                                                                            <label for="formGroupExampleInput">Monitoreo 3 malos y 3 regulares</label>
+                                                                            <input type="text" id="monitoreocontenido2" name="monitoreocontenido2" class="form-control" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br><br><br>
+                                                                    <br><br><br><br>
+
                                                                 </div>
 
                                                                 <h4>Organizacón del equipo FOJAL</h4>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="registroorg" id="registroorg">
+                                                                        <select  required="true" class="form-control MonitoreoOrganizacion"  name="registroorg" id="registroorg">
                                                                             <option value="">Considera adecuado el tiempo que tarda en registrarse en las instalaciones de fojal</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -338,7 +332,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="atencionorg" id="atencionorg">
+                                                                        <select  required="true" class="form-control MonitoreoOrganizacion"  name="atencionorg" id="atencionorg">
                                                                             <option value="">Comó considera la atención del personal de recepción...</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -348,7 +342,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="registrocursos" id="registrocursos">
+                                                                        <select  required="true" class="form-control MonitoreoOrganizacion"  name="registrocursos" id="registrocursos">
                                                                             <option value="">Considera que el registro para los cursos es…</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
@@ -360,32 +354,19 @@
                                                                     <br>
                                                                 </div>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-                                                                    <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="monitoreoorg1" id="monitoreoorg1">
-                                                                            <option value="">Monitoreo 1 malo y 1 regular4</option>
-                                                                            <option value="Excelente">Excelente</option>
-                                                                            <option value="Bueno">Bueno</option>
-                                                                            <option value="Regular">Regular</option>
-                                                                            <option value="Malo">Malo</option>
-                                                                            <option value="x">Ninguno</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <select  required="true" class="form-control "  name="monitoreoorg2" id="monitoreoorg2">
-                                                                            <option value="">Monitoreo 3 malos o 3 regulares5..</option>
-                                                                            <option value="Excelente">Excelente</option>
-                                                                            <option value="Bueno">Bueno</option>
-                                                                            <option value="Regular">Regular</option>
-                                                                            <option value="Malo">Malo</option>
-                                                                            <option value="x">Ninguno</option>
-                                                                        </select>
+                                                                    <div class="form-group ">
+                                                                        <div class="form-group col-lg-6" >
+                                                                            <label for="formGroupExampleInput">Monitoreo 1 malo y 1 regular</label>
+                                                                            <input type="text" id="monitoreoorg1" name="monitoreoorg1" class="form-control" readonly>
+                                                                        </div>
+                                                                        <div class="form-group col-lg-6">
+                                                                            <label for="formGroupExampleInput">Monitoreo 3 malos y 3 regulares</label>
+                                                                            <input type="text" id="monitoreoorg2" name="monitoreoorg2" class="form-control" readonly>
+                                                                        </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                     </div>
-                                                                    <br>
-                                                                    <br>
-                                                                    <br>
+                                                                    <br><br><br><br>
                                                                 </div>
 
                                                                 <h4>Comentarios</h4>
@@ -424,12 +405,7 @@
                 </div>
         </form>
         <br>
-        <?php if(isset($alert) && $alert != null && isset($alert->type)): ?>
-            <div class="alert alert-<?php echo e($alert->type); ?>" role="alert">
-                <?php echo e($alert->message); ?>
 
-            </div>
-        <?php endif; ?>
         <script src="<?php echo e(asset('js/form_academia.js')); ?>" charset="utf-8"></script>
     </section>
 <?php $__env->stopSection(); ?>

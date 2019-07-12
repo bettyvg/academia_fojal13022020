@@ -37,6 +37,7 @@
                                                                             <div class="col-lg-2"><label>Elegir capacitador</label></div>
                                                                             <div class="col-lg-4">
                                                                             <select
+                                                                                    required="true"
                                                                                     class="form-control"
                                                                                     name="id_capacitador"
                                                                                     id="id_capacitador">
@@ -54,6 +55,7 @@
                                                                             <div class="col-lg-2"><label>Desde</label></div>
                                                                             <div class="col-lg-4">
                                                                         <input name="fecha1" id="fecha1"
+                                                                               required="true"
                                                                                type="date"
                                                                                class="form-control"
                                                                                placeholder="Fecha del curso"
@@ -67,6 +69,7 @@
                                                                             <div class="col-lg-4">
                                                                         <input name="fecha2" id="fecha2"
                                                                                type="date"
+
                                                                                class="form-control"
                                                                                placeholder="Fecha del curso"
                                                                                value="{{old('fecha2')}}">
@@ -82,64 +85,93 @@
 
                                                                         </div>
 
-                                                                        <table name="tbl_buscar" id="tbl_buscar" data-toggle="table"
-                                                                               data-show-columns="true"
-                                                                               data-resizable="true"
-                                                                               data-cookie="true"
-                                                                               data-cookie-id-table="saveId"
-                                                                               data-show-export="true"
-                                                                               data-click-to-select="true"
-                                                                               data-toolbar="#toolbar" >
-                                                                            <thead>
-                                                                            <tr >
-                                                                                <th data-field="fecha">Fecha del curso</th>
-                                                                                <th data-field="nombrepar" >Nombre participante</th>
-                                                                                <th data-field="Ejecutivo">Capacitador</th>
-                                                                                <th data-field="sesion">Sesion</th>
-                                                                                <th data-field="cve_compuesta_ent_mun">Municipio</th>
-                                                                                <th data-field="id_institucion">Institución</th>
-                                                                                <th data-field="Puntualidad" data-checkbox="false">
-                                                                                    Puntualidad
-                                                                                </th>
-                                                                                <th data-field="Conocimiento">
-                                                                                    Dominio del tema
-                                                                                </th>
-                                                                                <th data-field="Capacidad">Técnica de exposición</th>
-                                                                                <th data-field="Claridad">Ejemplos aplicados a las empresas</th>
-                                                                                <th data-field="Utilidad">Ejercicios al finalizar cada tema </th>
-                                                                                <th data-field="ModeloEmprendimiento">
-                                                                                    Empatía con el grupo
-                                                                                </th>
-                                                                                <th data-field="AisteFojal">Fluidez para hablar
-                                                                                </th>
-                                                                                <th data-field="PersonaJuridica">Impartió todos los temas
-                                                                                </th>
-                                                                                <th data-field="AltaHacienda">Capacidad  de resolver preguntas sobre el tema</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            @foreach ($busqueda as $Items )
-                                                                                <tr role="row" class="odd">
-                                                                                    <td class="sorting_1">{{$Items->fecha}}</td>
-                                                                                    <td class="sorting_1">{{$Items->nombrepar}}</td>
-                                                                                    <td class="sorting_1">{{$Items->nombre_cap->nom_cap}}</td>
-                                                                                    <td class="sorting_1">{{$Items->sesion}}</td>
-                                                                                    <td class="sorting_1">{{$Items->nombre_municipio->nom_mun}}</td>
-                                                                                    <td class="sorting_1">{{$Items->nombre_institucion->nombre_inst}}</td>
-                                                                                    <td class="sorting_1">{{$Items->puntualidad}}</td>
-                                                                                    <td class="sorting_1">{{$Items->dominiotema}}</td>
-                                                                                    <td class="sorting_1">{{$Items->exposicion}}</td>
-                                                                                    <td class="sorting_1">{{$Items->ejemplos}}</td>
-                                                                                    <td class="sorting_1">{{$Items->ejercicios}}</td>
-                                                                                    <td class="sorting_1">{{$Items->empatiagrupo}}</td>
-                                                                                    <td class="sorting_1">{{$Items->fluidez}}</td>
-                                                                                    <td class="sorting_1">{{$Items->todostemas}}</td>
-                                                                                    <td class="sorting_1">{{$Items->capresolver}}</td>
-                                                                                </tr>
-                                                                            @endforeach
-                                                                            </tbody>
-                                                                        </table>
-                                                                        {{$busqueda->render()}}
+                                                                        <div class="container-fluid">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                    <div class="sparkline13-list">
+                                                                                        <div class="sparkline13-hd">
+                                                                                            <div class="main-sparkline13-hd">
+                                                                                                <!--<h1>Projects <span class="table-project-n">Data</span> Table</h1>-->
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="sparkline13-graph">
+                                                                                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                                                                                <div id="toolbar">
+                                                                                                    <select class="form-control dt-tb">
+                                                                                                        <option value="all">Exportar todo</option>
+                                                                                                        <option value="selected">Exportar Seleccionados
+                                                                                                        </option>
+                                                                                                    </select>
+                                                                                                </div>
+
+                                                                                                <table id="table" data-toggle="table"
+                                                                                                       data-pagination="true"
+                                                                                                       data-search="true"
+                                                                                                       data-show-columns="true"
+                                                                                                       data-show-pagination-switch="true"
+                                                                                                       data-show-toggle="true" data-resizable="true"
+                                                                                                       data-cookie="true"
+                                                                                                       data-cookie-id-table="saveId"
+                                                                                                       data-show-export="true"
+                                                                                                       data-click-to-select="true"
+                                                                                                       data-toolbar="#toolbar">
+                                                                                                    <thead>
+                                                                                                    <tr>
+                                                                                                        <th data-field="state" data-checkbox="true"></th>
+                                                                                                        <th data-field="fecha">Fecha del curso</th>
+                                                                                                        <th data-field="nombrepar" >Nombre participante</th>
+                                                                                                        <th data-field="Ejecutivo">Capacitador</th>
+                                                                                                        <th data-field="sesion">Sesion</th>
+                                                                                                        <th data-field="cve_compuesta_ent_mun">Municipio</th>
+                                                                                                        <th data-field="id_institucion">Institución</th>
+                                                                                                        <th data-field="Puntualidad" data-checkbox="false">
+                                                                                                            Puntualidad
+                                                                                                        </th>
+                                                                                                        <th data-field="Conocimiento">
+                                                                                                            Dominio del tema
+                                                                                                        </th>
+                                                                                                        <th data-field="Capacidad">Técnica de exposición</th>
+                                                                                                        <th data-field="Claridad">Ejemplos aplicados a las empresas</th>
+                                                                                                        <th data-field="Utilidad">Ejercicios al finalizar cada tema </th>
+                                                                                                        <th data-field="ModeloEmprendimiento">
+                                                                                                            Empatía con el grupo
+                                                                                                        </th>
+                                                                                                        <th data-field="AisteFojal">Fluidez para hablar
+                                                                                                        </th>
+                                                                                                        <th data-field="PersonaJuridica">Impartió todos los temas
+                                                                                                        </th>
+                                                                                                        <th data-field="AltaHacienda">Capacidad  de resolver preguntas sobre el tema</th>
+                                                                                                    </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                    @foreach ($busqueda as $Items)
+                                                                                                        <tr role="row" class="odd">
+                                                                                                            <td class="sorting_1"></td>
+                                                                                                            <td class="sorting_1">{{$Items->fecha}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->nombrepar}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->nombre_cap->nom_cap." ".$Items->nombre_cap->apellido_paterno." ".$Items->nombre_cap->apellido_materno}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->sesion}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->nombre_municipio->nom_mun}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->nombre_institucion->nombre_inst}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->puntualidad}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->dominiotema}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->exposicion}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->ejemplos}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->ejercicios}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->empatiagrupo}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->fluidez}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->todostemas}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->capresolver}}</td>
+                                                                                                        </tr>
+                                                                                                    @endforeach
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <br><br>

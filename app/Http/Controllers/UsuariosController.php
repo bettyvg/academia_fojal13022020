@@ -199,7 +199,7 @@ class UsuariosController extends BaseController {
 
 
 
-    public function edit555($id){
+    public function edit($id){
         $usuario_session = Session::get('usuario');
         if(!$usuario_session){
             return Redirect::route('login');

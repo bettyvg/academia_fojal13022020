@@ -250,12 +250,7 @@
                 </div>
         </form>
         <br>
-        <?php if(isset($alert) && $alert != null && isset($alert->type)): ?>
-            <div class="alert alert-<?php echo e($alert->type); ?>" role="alert">
-                <?php echo e($alert->message); ?>
 
-            </div>
-        <?php endif; ?>
     </section>
 <?php $__env->stopSection(); ?>
 
