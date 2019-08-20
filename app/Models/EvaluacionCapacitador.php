@@ -15,7 +15,7 @@ class EvaluacionCapacitador extends Model
     protected $fillable = ['fecha',
         'nombrepar',
         'id_capacitador',
-        'sesion',
+        'id_tema',
         'cve_compuesta_ent_mun',
         'id_institucion',
         'puntualidad',
@@ -36,7 +36,6 @@ class EvaluacionCapacitador extends Model
         'objetivoscurso',
         'contenidocurso',
         'contenidocuaderno',
-        'apoyo',
         'monitoreocontenido1',
         'monitoreocontenido2',
         'registroorg',
@@ -64,6 +63,12 @@ class EvaluacionCapacitador extends Model
     {
         return $this->hasOne('App\Models\Cat_instituciones', 'id_institucion', 'id_institucion');
     }
+
+    public function temas()
+    {
+        return $this->hasOne('App\Models\Cat_temas', 'id_tema', 'id_tema');
+    }
+
 
 
     public function scopeSearch($query, $id_capacitador, $fecha1="",$fecha2="")

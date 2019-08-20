@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/academia_fojal.iml" filepath="$PROJECT_DIR$/.idea/academia_fojal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../herramientas-fojal/.idea/herramientas-fojal.iml" filepath="$PROJECT_DIR$/../herramientas-fojal/.idea/herramientas-fojal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../facturas/.idea/iieg-facturas.iml" filepath="$PROJECT_DIR$/../facturas/.idea/iieg-facturas.iml" />
     </modules>
   </component>
 </project>

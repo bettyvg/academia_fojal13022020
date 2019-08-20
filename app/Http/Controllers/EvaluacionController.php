@@ -22,7 +22,7 @@ class EvaluacionController extends BaseController
 
     public function evaluacionplatica()    {
         $cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
-        $cat_ejecutivos = Cat_ejecutivos::select('id_ejecutivo','nombre', 'apellido_paterno', 'apellido_materno')->orderBy('id_ejecutivo', 'ASC')->get();
+        $cat_ejecutivos = Cat_ejecutivos::select('id_ejecutivo','nombre_ejecutivo', 'apellido_paterno', 'apellido_materno')->orderBy('id_ejecutivo', 'ASC')->get();
 
 
         //dd($registro); //para realizar una consulta de
@@ -38,15 +38,16 @@ class EvaluacionController extends BaseController
     }
 
     public function evaluacion(EvaluacionRequest $request)    {
-        //dd(request()->all());
+        dd(request()->all());
         try {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
-                $cat_ejecutivos = Cat_ejecutivos::select('id_ejecutivo','nombre', 'apellido_paterno', 'apellido_materno')->orderBy('id_ejecutivo', 'ASC')->get();
+                $cat_ejecutivos = Cat_ejecutivos::select('id_ejecutivo','nombre_ejecutivo', 'apellido_paterno', 'apellido_materno')->orderBy('id_ejecutivo', 'ASC')->get();
                 $detalle_evaluacion = evaluacion::all();
 
-                evaluacion::create(request($request)->all());
 
+
+                evaluacion::create(request()->all());
 
                 $alert = new \stdClass();
                 $alert->message = 'La evaluación se envio correctamente';
@@ -74,9 +75,9 @@ class EvaluacionController extends BaseController
     }
 
 
-    public function DetalleEvaluacion(){
+   /* public function DetalleEvaluacion(){
         $cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
-        $cat_ejecutivos = Cat_ejecutivos::select('id_ejecutivo','nombre', 'apellido_paterno', 'apellido_materno')->orderBy('id_ejecutivo', 'ASC')->get();
+        $cat_ejecutivos = Cat_ejecutivos::select('id_ejecutivo','nombre_ejecutivo', 'apellido_paterno', 'apellido_materno')->orderBy('id_ejecutivo', 'ASC')->get();
 
         $detalle_evaluacion = evaluacion::get();
 
@@ -86,5 +87,5 @@ class EvaluacionController extends BaseController
             'cat_ejecutivos' => $cat_ejecutivos,
 
         ));
-    }
+    }*/
 }

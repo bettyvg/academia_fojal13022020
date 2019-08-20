@@ -197,4 +197,4 @@
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<?php /* /var/www/html/academia_fojal/resources/views/ModificaUsuarios.blade.php */ ?>
+<?php /* /var/www/html/academia_fojal/resources/views/ModificaUsuarios1.blade.php */ ?>

@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="{{asset('css/educate-custon-icon.css')}}">
     <!--
 		============================================ -->
-    <link rel="stylesheet" href="{{('css/editor/select2.css')}}">
+    <link rel="stylesheet" href="{{asset('css/editor/select2.css')}}">
 
     <!-- mCustomScrollbar CSS
 		============================================ -->
@@ -58,9 +58,10 @@
 		============================================ -->
     <script src="{{asset('js/vendor/jquery-3.4.1.min.js')}}"></script>
 
-    <link rel="stylesheet" href="css/data-table/bootstrap-table.css">
-    <link rel="stylesheet" href="css/data-table/bootstrap-editable.css">
+    <link rel="stylesheet" href="{{asset('css/data-table/bootstrap-table.css')}}">
+    <link rel="stylesheet" href="{{asset('css/data-table/bootstrap-editable.css')}}">
 
+    <script src="{{asset('js/form_academia.js')}}" charset="utf-8"></script>
 
     <!-- formulario JS
        ============================================ -->
@@ -85,7 +86,7 @@ $user = Session::get('usuario');
         <nav id="sidebar" class="">
             <div class="sidebar-header">
                 <a href="home"><br><img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt="" style="width: 200px"/></a>
-                <strong><a href="home"><img src="img/logo/logosn.png" alt="" style="width: 100px"/></a></strong>
+                <strong><a href="home"><img src="{{asset('img/logo/logosn.png')}}" alt="" style="width: 100px"/></a></strong>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
@@ -96,10 +97,25 @@ $user = Session::get('usuario');
                                 <i class="@if($_SERVER['REQUEST_URI'] == '/') active @endif "></i><span class="educate-icon educate-home "></span><span class="mini-click-non"> Inicio</span>
                             </a>
                         </li>
-
+                        @if($user->id_perfil == '1')
                         <li>
-                            <a class="has-arrow" href="{{asset('usuarios')}}" aria-expanded="false"><span class="fa fa-users "></span> <span class="mini-click-non">Usuarios</span></a>
+                            <a class="has-arrow" aria-expanded="false"><span class="mini-click-non">Usuarios</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Creación de usuarios" href="{{route('usuarios')}}"><span class="mini-sub-pro">Registro</span></a></li>
+                                <li><a title="Modificación de usuarios" href="{{route('modificaUsuarios')}}"><span class="mini-sub-pro">Modifica usuarios</span></a></li>
+                            </ul>
                         </li>
+                        <li>
+                            <a class="has-arrow" href="" aria-expanded="false"><span class="glyphicon glyphicon-briefcase "></span> <span class="mini-click-non">Generales</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Catálago capacitadores" href="{{route('capacitadores')}}"><span class="mini-sub-pro">Catálago capacitador </span></a></li>
+                                <li><a title="Catálago Ejecutivos" href="{{route('ejecutivos')}}"><span class="mini-sub-pro">Catálago instructores</span></a></li>
+                                <li><a title="Catálago perfiles" href="{{route('inicio')}}"><span class="mini-sub-pro">Catálago perfiles</span></a></li>
+                                <li><a title="Catálago puestos" href="{{route('puestos')}}"><span class="mini-sub-pro">Catálago puestos</span></a></li>
+                                <li><a title="Catálago de Temas" href="{{route('temas')}}"><span class="mini-sub-pro">Catálago temas</span></a></li>
+                            </ul>
+                        </li>
+                        @endif
 
                         <li>
                             <a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-library "></span> <span class="mini-click-non">Vinculación</span></a>
@@ -112,13 +128,11 @@ $user = Session::get('usuario');
 
                             </ul>
                         </li>
-
+                        @if($user->id_perfil == '1')
                         <li>
                             <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-professor "></span> <span class="mini-click-non">Programación</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Capacitadores" href=""><span class="mini-sub-pro">Capacitadores</span></a></li>
                                 <li><a title="Programación cursos" href="{{route('inicio')}}"><span class="mini-sub-pro">Programación cursos</span></a></li>
-                                <li><a title="Catálago de Temas" href="{{route('inicio')}}"><span class="mini-sub-pro">Catalago temas</span></a></li>
                                 <li><a title="Pagos" href="{{route('inicio')}}"><span class="mini-sub-pro">Pagos</span></a></li>
 
                             </ul>
@@ -136,8 +150,8 @@ $user = Session::get('usuario');
                         </li>
                         <li>
                             <a class="has-arrow" href="{{route('inicio')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non"> Descargas</span></a>
-
                         </li>
+@endif
 
                         <li id="removable">
                             <a class="has-arrow" aria-expanded="false" href="{{route('signout')}}"><span class="educate-icon educate-pages icon-wrap"></span> <span class="mini-click-non">Salir</span></a>
@@ -155,7 +169,7 @@ $user = Session::get('usuario');
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" style="width: 120px"/></a>
+                        <a href="index.html"><img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt="" style="width: 120px"/></a>
                     </div>
                 </div>
             </div>
@@ -218,7 +232,7 @@ $user = Session::get('usuario');
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-															<img src="img/product/pro4.png" alt=""  style="width: 30px"/>
+															<img src="{{asset('img/product/pro4.png')}}" alt=""  style="width: 30px"/>
                                                             <a class="dropdown-toggle" data-toggle="dropdown">
                                                                 <span class="hidden-xs">{{$user->nombre.' '.$user->apellido_paterno}}</span>
                                                             </a>
@@ -253,9 +267,12 @@ $user = Session::get('usuario');
                                         <li><a data-toggle="collapse" data-target="#Inicio" href="{{route('inicio')}}">Inicio<span class="@if($_SERVER['REQUEST_URI'] == '/') active @endif "></span></a>
 
                                         </li>
-
-                                        <li><a data-toggle="collapse" data-target="#demoevent" href="{{route('usuarios')}}">Usuarios <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-
+                                        <li>
+                                            <a class="has-arrow" aria-expanded="false"><span class="mini-click-non">Usuarios</span></a>
+                                            <ul class="submenu-angle" aria-expanded="false">
+                                                <li><a title="Creación de usuarios" href="{{route('usuarios')}}"><span class="mini-sub-pro">Registro</span></a></li>
+                                                <li><a title="Modificación de usuarios" href="{{route('modificaUsuarios')}}"><span class="mini-sub-pro">Modifica usuarios</span></a></li>
+                                            </ul>
                                         </li>
                                         <li>
                                             <a class="has-arrow" aria-expanded="false"><span class="mini-click-non">Vinculación</span></a>
@@ -266,7 +283,7 @@ $user = Session::get('usuario');
 
                                             </ul>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#demopro" href="capacitores">Capacitadores<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <li><a data-toggle="collapse" data-target="#demopro" href="capacitadores">Capacitadores<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#democrou" href="cursos">Emprendedores<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
@@ -275,9 +292,9 @@ $user = Session::get('usuario');
                                         <li>
                                             <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-professor "></span> <span class="mini-click-non">Programación</span></a>
                                             <ul class="submenu-angle" aria-expanded="false">
-                                                <li><a title="Capacitadores" href=""><span class="mini-sub-pro">Capacitadores</span></a></li>
+                                                <li><a title="Capacitadores" href="{{route('capacitadores')}}"><span class="mini-sub-pro">Capacitadores</span></a></li>
                                                 <li><a title="Programación cursos" href="{{route('inicio')}}"><span class="mini-sub-pro">Programación cursos</span></a></li>
-                                                <li><a title="Catálago de Temas" href="{{route('inicio')}}"><span class="mini-sub-pro">Catalago temas</span></a></li>
+                                                <li><a title="Catálago de Temas" href="{{route('temas')}}"><span class="mini-sub-pro">Catalago temas</span></a></li>
                                                 <li><a title="Pagos" href="{{route('inicio')}}"><span class="mini-sub-pro">Pagos</span></a></li>
 
                                             </ul>
@@ -329,62 +346,62 @@ $user = Session::get('usuario');
 
     <!-- bootstrap JS
        ============================================ -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <!-- jquery
 		============================================ -->
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
 
     <!-- wow JS
 		============================================ -->
-    <script src="js/wow.min.js"></script>
+    <script src="{{asset('js/wow.min.js')}}"></script>
     <!-- price-slider JS
 		============================================ -->
-    <script src="js/jquery-price-slider.js"></script>
+    <script src="{{asset('js/jquery-price-slider.js')}}"></script>
     <!-- meanmenu JS
 		============================================ -->
-    <script src="js/jquery.meanmenu.js"></script>
+    <script src="{{asset('js/jquery.meanmenu.js')}}"></script>
     <!-- owl.carousel JS
 		============================================ -->
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
     <!-- sticky JS
 		============================================ -->
-    <script src="js/jquery.sticky.js"></script>
+    <script src="{{asset('js/jquery.sticky.js')}}"></script>
     <!-- scrollUp JS
 		============================================ -->
-    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
 
     <!-- metisMenu JS
 		============================================ -->
-    <script src="js/metisMenu/metisMenu.min.js"></script>
-    <script src="js/metisMenu/metisMenu-active.js"></script>
+    <script src="{{asset('js/metisMenu/metisMenu.min.js')}}"></script>
+    <script src="{{asset('js/metisMenu/metisMenu-active.js')}}"></script>
     <!-- morrisjs JS
 		============================================ -->
-    <script src="js/sparkline/jquery.sparkline.min.js"></script>
-    <script src="js/sparkline/jquery.charts-sparkline.js"></script>
+    <script src="{{asset('js/sparkline/jquery.sparkline.min.js')}}"></script>
+    <script src="{{asset('js/sparkline/jquery.charts-sparkline.js')}}"></script>
 
     <!-- maskedinput JS
 		============================================ -->
-    <script src="js/jquery.maskedinput.min.js"></script>
-    <script src="js/masking-active.js"></script>
+    <script src="{{asset('js/jquery.maskedinput.min.js')}}"></script>
+    <script src="{{asset('js/masking-active.js')}}"></script>
 
     <!-- tab JS
 		============================================ -->
-    <script src="js/tab.js"></script>
+    <script src="{{asset('js/tab.js')}}"></script>
 
     <!-- main JS
 		============================================ -->
-    <script src="js/main.js"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 
 
     <!-- data table JS
             ============================================ -->
-    <script src="js/data-table/bootstrap-table.js"></script>
-    <script src="js/data-table/tableExport.js"></script>
-    <script src="js/data-table/data-table-active.js"></script>
-    <script src="js/data-table/bootstrap-table-editable.js"></script>
+    <script src="{{asset('js/data-table/bootstrap-table.js')}}"></script>
+    <script src="{{asset('js/data-table/tableExport.js')}}"></script>
+    <script src="{{asset('js/data-table/data-table-active.js')}}"></script>
+    <script src="{{asset('js/data-table/bootstrap-table-editable.js')}}"></script>
 
-    <script src="js/data-table/bootstrap-table-resizable.js"></script>
-    <script src="js/data-table/colResizable-1.5.source.js"></script>
-    <script src="js/data-table/bootstrap-table-export.js"></script>
+    <script src="{{asset('js/data-table/bootstrap-table-resizable.js')}}"></script>
+    <script src="{{asset('js/data-table/colResizable-1.5.source.js')}}"></script>
+    <script src="{{asset('js/data-table/bootstrap-table-export.js')}}"></script>
 
 

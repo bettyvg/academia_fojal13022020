@@ -226,4 +226,4 @@
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<?php /* C:\laragon\www\academia_fojal\resources\views/capacitores.blade.php */ ?>
+<?php /* C:\laragon\www\academia_fojal\resources\views/capacitadores.blade.php */ ?>

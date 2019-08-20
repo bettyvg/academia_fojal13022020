@@ -71,12 +71,17 @@
                                                                 </div>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="form-group">
-                                                                        <input name="sesion" id="sesion"
-                                                                               type="text"
-                                                                               required="true"
-                                                                               class="form-control"
-                                                                               placeholder="Sesión"
-                                                                               value="<?php echo e(old('sesion')); ?>">
+                                                                        <select
+                                                                                class="form-control"
+                                                                                required="true"
+                                                                                name="id_tema"
+                                                                                id="id_tema">
+                                                                            <option value="">Sesión
+                                                                            </option>
+                                                                            <?php $__currentLoopData = $cat_temas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $temas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                <option value="<?php echo e($temas->id_tema); ?>" <?php if(old('id_tema')==$temas->id_tema): ?>selected="selected"<?php endif; ?>> <?php echo e($temas->num_sesion." - ".$temas->tema); ?></option>
+                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <select
@@ -290,16 +295,6 @@
                                                                             <option value="x">Ninguno</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <select  required="true" class="form-control MonitoreoContenido"  name="apoyo" id="apoyo">
-                                                                            <option value="">Como fuente de apoyo a la presentación..</option>
-                                                                            <option value="Excelente">Excelente</option>
-                                                                            <option value="Bueno">Bueno</option>
-                                                                            <option value="Regular">Regular</option>
-                                                                            <option value="Malo">Malo</option>
-                                                                            <option value="x">Ninguno</option>
-                                                                        </select>
-                                                                    </div>
                                                                     <br>
                                                                 </div>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -410,5 +405,4 @@
     </section>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<?php /* C:\laragon\www\academia_fojal\resources\views/EvaluacionCapacitadores.blade.php */ ?>
+<?php echo $__env->make('main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\academia_fojal\resources\views/EvaluacionCapacitadores.blade.php ENDPATH**/ ?>

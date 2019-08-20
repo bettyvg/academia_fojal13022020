@@ -71,12 +71,17 @@
                                                                 </div>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="form-group">
-                                                                        <input name="sesion" id="sesion"
-                                                                               type="text"
-                                                                               required="true"
-                                                                               class="form-control"
-                                                                               placeholder="Sesión"
-                                                                               value="{{old('sesion')}}">
+                                                                        <select
+                                                                                class="form-control"
+                                                                                required="true"
+                                                                                name="id_tema"
+                                                                                id="id_tema">
+                                                                            <option value="">Sesión
+                                                                            </option>
+                                                                            @foreach($cat_temas as $temas)
+                                                                                <option value="{{$temas->id_tema}}" @if(old('id_tema')==$temas->id_tema)selected="selected"@endif> {{$temas->num_sesion." - ".$temas->tema}}</option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <select
@@ -283,16 +288,6 @@
                                                                     <div class="form-group">
                                                                         <select  required="true" class="form-control MonitoreoContenido"  name="contenidocuaderno" id="contenidocuaderno">
                                                                             <option value="">Considera adecuado el contenido de los cuadernos de trabajo ..</option>
-                                                                            <option value="Excelente">Excelente</option>
-                                                                            <option value="Bueno">Bueno</option>
-                                                                            <option value="Regular">Regular</option>
-                                                                            <option value="Malo">Malo</option>
-                                                                            <option value="x">Ninguno</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <select  required="true" class="form-control MonitoreoContenido"  name="apoyo" id="apoyo">
-                                                                            <option value="">Como fuente de apoyo a la presentación..</option>
                                                                             <option value="Excelente">Excelente</option>
                                                                             <option value="Bueno">Bueno</option>
                                                                             <option value="Regular">Regular</option>

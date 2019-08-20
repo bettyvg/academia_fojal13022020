@@ -65,7 +65,7 @@
                                                                                 ejecutivo..
                                                                             </option>
                                                                             <?php $__currentLoopData = $cat_ejecutivos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ejecutivos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                <option value="<?php echo e($ejecutivos->id_ejecutivo); ?>" <?php if(old('id_ejecutivo')==$ejecutivos->id_ejecutivo): ?>selected="selected"<?php endif; ?>><?php echo e($ejecutivos->nombre." ". $ejecutivos->apellido_paterno." ".$ejecutivos->apellido_materno); ?></option>
+                                                                                <option value="<?php echo e($ejecutivos->id_ejecutivo); ?>" <?php if(old('id_ejecutivo')==$ejecutivos->id_ejecutivo): ?>selected="selected"<?php endif; ?>><?php echo e($ejecutivos->nombre_ejecutivo." ". $ejecutivos->apellido_paterno." ".$ejecutivos->apellido_materno); ?></option>
                                                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                         </select>
                                                                     </div>
@@ -741,10 +741,10 @@
                                                                                 <tr role="row" class="odd">
                                                                                     <td class="sorting_1"></td>
                                                                                     <td class="sorting_1"><?php echo e($Items->nombre); ?></td>
-                                                                                    <td class="sorting_1"><?php echo e($Items->id_ejecutivo); ?></td>
+                                                                                    <td class="sorting_1"><?php echo e($Items->ejecutivos->nombre_ejecutivo." ".$Items->ejecutivos->apellido_materno." ".$Items->ejecutivos->apellido_paterno); ?></td>
                                                                                     <td class="sorting_1"><?php echo e($Items->telefono); ?></td>
                                                                                     <td class="sorting_1"><?php echo e($Items->curp); ?></td>
-                                                                                    <td class="sorting_1"><?php echo e($Items->municipio); ?></td>
+                                                                                    <td class="sorting_1"><?php echo e($Items->nombre_municipio->nom_mun); ?></td>
                                                                                     <td class="sorting_1"><?php echo e($Items->puntualidad); ?></td>
                                                                                     <td class="sorting_1"><?php echo e($Items->conocimiento); ?></td>
                                                                                     <td class="sorting_1"><?php echo e($Items->capacidad); ?></td>
@@ -785,9 +785,8 @@
 
             </div>
         <?php endif; ?>
-
+        <script src="<?php echo e(asset('js/form_academia.js')); ?>" charset="utf-8"></script>
     </section>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<?php /* C:\laragon\www\academia_fojal\resources\views/evaluacionplaticainfo.blade.php */ ?>
+<?php echo $__env->make('main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\academia_fojal\resources\views/evaluacionplaticainfo.blade.php ENDPATH**/ ?>

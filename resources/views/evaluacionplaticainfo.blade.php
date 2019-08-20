@@ -65,7 +65,7 @@
                                                                                 ejecutivo..
                                                                             </option>
                                                                             @foreach($cat_ejecutivos as $ejecutivos)
-                                                                                <option value="{{$ejecutivos->id_ejecutivo}}" @if(old('id_ejecutivo')==$ejecutivos->id_ejecutivo)selected="selected"@endif>{{$ejecutivos->nombre." ". $ejecutivos->apellido_paterno." ".$ejecutivos->apellido_materno}}</option>
+                                                                                <option value="{{$ejecutivos->id_ejecutivo}}" @if(old('id_ejecutivo')==$ejecutivos->id_ejecutivo)selected="selected"@endif>{{$ejecutivos->nombre_ejecutivo." ". $ejecutivos->apellido_paterno." ".$ejecutivos->apellido_materno}}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -741,10 +741,10 @@
                                                                                 <tr role="row" class="odd">
                                                                                     <td class="sorting_1"></td>
                                                                                     <td class="sorting_1">{{$Items->nombre}}</td>
-                                                                                    <td class="sorting_1">{{$Items->id_ejecutivo}}</td>
+                                                                                    <td class="sorting_1">{{$Items->ejecutivos->nombre_ejecutivo." ".$Items->ejecutivos->apellido_materno." ".$Items->ejecutivos->apellido_paterno}}</td>
                                                                                     <td class="sorting_1">{{$Items->telefono}}</td>
                                                                                     <td class="sorting_1">{{$Items->curp}}</td>
-                                                                                    <td class="sorting_1">{{$Items->municipio}}</td>
+                                                                                    <td class="sorting_1">{{$Items->nombre_municipio->nom_mun}}</td>
                                                                                     <td class="sorting_1">{{$Items->puntualidad}}</td>
                                                                                     <td class="sorting_1">{{$Items->conocimiento}}</td>
                                                                                     <td class="sorting_1">{{$Items->capacidad}}</td>
@@ -784,6 +784,6 @@
                 {{ $alert->message }}
             </div>
         @endif
-
+        <script src="{{asset('js/form_academia.js')}}" charset="utf-8"></script>
     </section>
 @endsection

@@ -41,7 +41,7 @@ class RegistroController extends BaseController
             ->join('cat_escolaridad', 'cat_escolaridad.id_escolaridad', '=','registroplatica.id_escolaridad')
             ->join('cat_entidades', 'cat_entidades.cve_ent', '=','registroplatica.cve_ent')
             ->join('cat_municipios','cat_municipios.cve_compuesta_ent_mun', '=', 'registroplatica.cve_compuesta_ent_mun')
-            ->get();
+            ->orderBy('created_at', 'ASC')->get();
 
         //dd($detalle_registrop);
 
@@ -67,7 +67,7 @@ class RegistroController extends BaseController
                     ->join('cat_escolaridad', 'cat_escolaridad.id_escolaridad', '=','registroplatica.id_escolaridad')
                     ->join('cat_entidades', 'cat_entidades.cve_ent', '=','registroplatica.cve_ent')
                     ->join('cat_municipios','cat_municipios.cve_compuesta_ent_mun', '=', 'registroplatica.cve_compuesta_ent_mun')
-                    ->get();
+                    ->orderBy('created_at', 'ASC')->get();
 
                 //$registro = new RegistroPlatica;
 

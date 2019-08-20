@@ -2,6 +2,7 @@ $(document).ready(function () {
     "use strict";
 
 
+
     /* áreas fojal*/
     $("#area").change(function () {
         var id_area = $("#area").val();
@@ -25,12 +26,14 @@ $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
                     $("#puesto").append('<option value="' + data[i].id_puesto + '">' + data[i].nom_puesto + '</option>');
 
-
                 }
+
             }
 
         });
     });
+
+
 
     /*Evaluación Capacitador cuente cuantas variables tienen Malo y Regular*/
     $(".MonitoreoEvalucion").change(function () {
@@ -49,6 +52,8 @@ $(document).ready(function () {
 
         var malo = 0;
         var regular = 0;
+        var bueno = 0;
+        var excelente = 0;
 
         for (var contar = 0; contar < Monitoreolista.length; contar++) {
             if (Monitoreolista[contar] == 'Malo') {
@@ -75,6 +80,8 @@ $(document).ready(function () {
         {
             $("#monitoreoeva2").val('Adecuado');
         }
+
+
 
 
     });
@@ -198,6 +205,40 @@ $(document).ready(function () {
             $("#monitoreoorg2").val('Adecuado');
         }
 
+
+    });
+
+    /*alertas*/
+    $(document).ready (function(){
+        $("#success-alert").hide();
+        $("#myWish").click(function showAlert() {
+            $("#success-alert").alert();
+            window.setTimeout(function () {
+                $("#success-alert").alert('close'); }, 2000);
+        });
+    });
+
+
+    /*Mostrar modal*/
+
+    $("#btnagregar_evaluacion").click(function () {
+
+        var nombre = $("#nombre").val();
+        var correo = $("#correo").val();
+        var id_ejecutivo     = $("#id_ejecutivo").val();
+        var telefono = $("#telefono").val();
+        var crup = $("#curp").val();
+        var municipio = $("#municipio").val();
+
+
+        if (nombre == "" || correo == "" || id_ejecutivo == "" || telefono == "" || id_ejecutivo =="" || crup == "" || municipio =="") {
+            alert('Todos los campos son obligatorios');
+            return false;
+
+        } else {
+            $("#modal_evaluacion").show();
+            return true;
+        }
 
     });
 

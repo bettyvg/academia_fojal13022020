@@ -23,22 +23,22 @@ class RegistroRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //Validación de campos registro de usuarios al sistema
 
-            'correo' => 'required|unique:usuarios,correo_electronico',
-            'extension' => 'required|numeric|min:50800|max:50999'
+            return [
+                //Validación de campos registro de usuarios al sistema
+
+                //'correo' => 'required|unique:usuarios,correo_electronico',
 
 
-        ];
+
+            ];
+
     }
 
     public function messages()
     {
         return [
             'correo.unique' => 'El correo ya esta en uso',
-            'extension.min' => 'La extención debe de estar en un rango de 50800 a 50999',
-            'extension.max' => 'La extención debe de estar en un rango de 50800 a 50999',
             'extension.numeric' => 'El campo solo acepta numeros',
 
         ];

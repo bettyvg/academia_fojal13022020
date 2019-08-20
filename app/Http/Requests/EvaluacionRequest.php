@@ -28,7 +28,8 @@ class EvaluacionRequest extends FormRequest
             'nombre' => 'required',
             'correo' => 'required',
             'id_ejecutivo' => 'required',
-            'curp' => 'required|unique:evaluacion,curp|min:18|max:18',
+            //'curp' => 'required|unique:evaluacion,curp|min:18|max:18',
+            'curp' => 'required|min:18|max:18',
             'municipio' => 'required|numeric|min:50800|max:50999',
         ];
     }
@@ -36,7 +37,7 @@ class EvaluacionRequest extends FormRequest
     {
         return [
             'correo.unique' => 'Este correo ya esta registrado',
-            'curp.unique' => 'Este CURP ya esta registrado',
+            //'curp.unique' => 'Este CURP ya esta registrado',
             'curp.min' => 'El CURP tiene que tener una longitud de minimo 18',
             'curp.max' => 'El CURP tiene que tener una longitud de maximo 18',
 

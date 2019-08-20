@@ -93,10 +93,13 @@ class UsuariosController extends BaseController {
 
                 $cat_perfiles = Cat_perfiles::all();
                 $cat_direcciones = Cat_direcciones::all();
-                $detalle_registrousuarios = Usuario::select('id_usuario','nombre','apellido_paterno','apellido_materno','correo_electronico','cat_perfiles.nom_perfil','cat_direcciones.nom_dir','cat_puestos.nom_puesto','extension','created_at')
+                $detalle_registrousuarios = Usuario::select('id_usuario','nombre','apellido_paterno','apellido_materno','correo_electronico','cat_perfiles.nom_perfil','cat_direcciones.nom_dir','cat_puestos.nom_puesto','created_at')
                     ->join('cat_perfiles', 'cat_perfiles.id_perfil', '=','usuarios.id_perfil')
                     ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','usuarios.id_direcciones')
                     ->join('cat_puestos','cat_puestos.id_puesto', '=', 'usuarios.id_puesto')
+                    ->get();
+                $cat_puestos = Cat_puestos::select('cat_puestos.nom_puesto','cat_puestos.id_direcciones','cat_direcciones.nom_dir')
+                    ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','cat_puestos.id_direcciones')
                     ->get();
 
                 if(Input::get('confirma-contrasena') == Input::get('contrasena'))
@@ -108,7 +111,6 @@ class UsuariosController extends BaseController {
                     $usuario->correo_electronico = Input::get('correo');
                     $usuario->id_direcciones = Input::get('area');
                     $usuario->id_puesto = Input::get('puesto');
-                    $usuario->extension = Input::get('extension');
                     $usuario->id_perfil = Input::get('perfil');
                     $usuario->password = Hash::make($pass);
 
@@ -122,7 +124,8 @@ class UsuariosController extends BaseController {
                         'alert' => $alert,
                         'detalle_registrousuarios' => $detalle_registrousuarios,
                         'cat_perfiles' => $cat_perfiles,
-                        'cat_direcciones' => $cat_direcciones
+                        'cat_direcciones' => $cat_direcciones,
+                        'cat_puestos' => $cat_puestos
                     ));
 
                 }else{
@@ -172,33 +175,6 @@ class UsuariosController extends BaseController {
 
     }
 
-    public function edit22($id){
-
-        $user=Usuario::find($id);
-
-        $cat_perfiles = Cat_perfiles::all();
-        $detalle_registrousuarios = Usuario::select('id_usuario','usuarios.nombre','apellido_paterno','apellido_materno','correo_electronico','cat_perfiles.nom_perfil','cat_direcciones.nom_dir','cat_puestos.nom_puesto','extension','created_at')
-            ->join('cat_perfiles', 'cat_perfiles.id_perfil', '=','usuarios.id_perfil')
-            ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','usuarios.id_direcciones')
-            ->join('cat_puestos','cat_puestos.id_puesto', '=', 'usuarios.id_puesto')
-            ->get();
-        $cat_direcciones = Cat_direcciones::all();
-        $cat_puestos = Cat_puestos::select('cat_puestos.nom_puesto','cat_puestos.id_direcciones','cat_direcciones.nom_dir')
-            ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','cat_puestos.id_direcciones')
-            ->get();
-
-        return view('ModificaUsuarios', array(
-            'cat_puestos'=> $cat_puestos,
-            'cat_direcciones' => $cat_direcciones,
-            'detalle_registrousuarios' => $detalle_registrousuarios,
-            'cat_perfiles' => $cat_perfiles))->with('user', $user);
-
-
-    }
-
-
-
-
     public function edit($id){
         $usuario_session = Session::get('usuario');
         if(!$usuario_session){
@@ -207,7 +183,7 @@ class UsuariosController extends BaseController {
         try {
             $title = 'Edicion de usuario';
             $cat_perfiles = Cat_perfiles::all();
-            $detalle_registrousuarios = Usuario::select('id_usuario','usuarios.nombre','apellido_paterno','apellido_materno','correo_electronico','cat_perfiles.nom_perfil','cat_direcciones.nom_dir','cat_puestos.nom_puesto','extension','created_at')
+            $detalle_registrousuarios = Usuario::select('id_usuario','usuarios.nombre','apellido_paterno','apellido_materno','correo_electronico','cat_perfiles.nom_perfil','cat_direcciones.nom_dir','cat_puestos.nom_puesto','created_at')
                 ->join('cat_perfiles', 'cat_perfiles.id_perfil', '=','usuarios.id_perfil')
                 ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','usuarios.id_direcciones')
                 ->join('cat_puestos','cat_puestos.id_puesto', '=', 'usuarios.id_puesto')
@@ -217,22 +193,26 @@ class UsuariosController extends BaseController {
                 ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','cat_puestos.id_direcciones')
                 ->get();
 
-            if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+
+           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $usuario = Usuario::find($id);
 
+                //dd($usuario);
                 if(Input::get('confirma-contrasena') == Input::get('contrasena'))
                 {
                     $usuario->nombre = Input::get('nombre');
                     $usuario->apellido_paterno = Input::get('apat');
                     $usuario->apellido_materno = Input::get('amat');
-                    $usuario->correo_electronico = Input::get('correo');
                     $usuario->id_direcciones = Input::get('area');
                     $usuario->id_puesto = Input::get('puesto');
-                    $usuario->extension = Input::get('extension');
                     $usuario->id_perfil = Input::get('perfil');
 
                     if(!Input::get('password') == ''){
                         $usuario->password = Hash::make(Input::get('password'));
+                    }
+
+                    if(Input::get('correo') != $usuario->correo_electronico){
+                        $usuario->correo_electronico = Input::get('correo');
                     }
 
                     $usuario->save();
@@ -240,7 +220,7 @@ class UsuariosController extends BaseController {
                     $alert = new \stdClass();
                     $alert->message = 'El usuario se actualizo correctamente.';
                     $alert->type = 'success';
-                    return View::make('ModificaUsuarios.edit', array('alert' => $alert,
+                    return View::make('usuarios', array('alert' => $alert,
                         'edit_user' => $usuario,
                         'title' => $title,
                         'cat_puestos'=> $cat_puestos,
@@ -252,10 +232,11 @@ class UsuariosController extends BaseController {
                     $alert = new \stdClass();
                     $alert->message = 'Las contraseñas no coinciden.';
                     $alert->type = 'danger';
-                    return View::make('ModificaUsuarios', array(
+                    return View::make('usuarios', array(
                         'title' => $title,
                         'alert' => $alert,
                         'detalle_registrousuarios' => $detalle_registrousuarios,
+                        'cat_puestos'=> $cat_puestos,
                         'cat_perfiles' => $cat_perfiles,
                         'cat_direcciones' => $cat_direcciones
                     ));
@@ -263,8 +244,8 @@ class UsuariosController extends BaseController {
 
             }else{
                 $edit_user = Usuario::find($id);
-                return View::make('ModificaUsuarios', array('edit_user' => $edit_user, 'cat_perfiles' => $cat_perfiles,
-                    'cat_direcciones' => $cat_direcciones, 'detalle_registrousuarios' => $detalle_registrousuarios,));
+                return View::make('usuarios', array('edit_user' => $edit_user, 'cat_perfiles' => $cat_perfiles,
+                    'cat_direcciones' => $cat_direcciones, 'detalle_registrousuarios' => $detalle_registrousuarios, 'cat_puestos'=> $cat_puestos,));
             }
 
         } catch (Exception $e) {
@@ -276,6 +257,7 @@ class UsuariosController extends BaseController {
                 'alert' => $alert,
                 'detalle_registrousuarios' => $detalle_registrousuarios,
                 'cat_perfiles' => $cat_perfiles,
+                'cat_puestos'=> $cat_puestos,
                 'cat_direcciones' => $cat_direcciones
             ));
         }
@@ -290,7 +272,7 @@ class UsuariosController extends BaseController {
             return Redirect::route('login');
         }
 
-        $detalle_registrousuarios = Usuario::select('id_usuario','usuarios.nombre','apellido_paterno','apellido_materno','correo_electronico','cat_perfiles.nom_perfil','cat_direcciones.nom_dir','cat_puestos.nom_puesto','extension','created_at')
+        $detalle_registrousuarios = Usuario::select('id_usuario','usuarios.nombre','apellido_paterno','apellido_materno','correo_electronico','cat_perfiles.nom_perfil','cat_direcciones.nom_dir','cat_puestos.nom_puesto','created_at')
             ->join('cat_perfiles', 'cat_perfiles.id_perfil', '=','usuarios.id_perfil')
             ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','usuarios.id_direcciones')
             ->join('cat_puestos','cat_puestos.id_puesto', '=', 'usuarios.id_puesto')
@@ -302,7 +284,7 @@ class UsuariosController extends BaseController {
             ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','cat_puestos.id_direcciones')
             ->get();
 
-        return View::make('usuarios', array(
+        return View::make('Usuarios', array(
             'detalle_registrousuarios' => $detalle_registrousuarios,
             'cat_perfiles'=> $cat_perfiles,
             'cat_puestos'=> $cat_puestos,
@@ -311,12 +293,39 @@ class UsuariosController extends BaseController {
 
     }
 
-    public function get_puesto($id_area){
+    public function modifusuarios(){
 
+        $usuario_session = Session::get('usuario');
+
+        if (!$usuario_session) {
+            return Redirect::route('login');
+        }
+
+        $detalle_registrousuarios = Usuario::select('id_usuario','usuarios.nombre','apellido_paterno','apellido_materno','correo_electronico','cat_perfiles.nom_perfil','cat_direcciones.nom_dir','cat_puestos.nom_puesto','created_at')
+            ->join('cat_perfiles', 'cat_perfiles.id_perfil', '=','usuarios.id_perfil')
+            ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','usuarios.id_direcciones')
+            ->join('cat_puestos','cat_puestos.id_puesto', '=', 'usuarios.id_puesto')
+            ->get();
+        $cat_perfiles = Cat_perfiles::all();
+        $cat_direcciones = Cat_direcciones::all();
+
+        $cat_puestos = Cat_puestos::select('cat_puestos.nom_puesto', 'cat_puestos.id_direcciones')
+            ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','cat_puestos.id_direcciones')
+            ->get();
+
+        return View::make('modificaUsuarios', array(
+            'detalle_registrousuarios' => $detalle_registrousuarios,
+            'cat_perfiles'=> $cat_perfiles,
+            'cat_puestos'=> $cat_puestos,
+            'cat_direcciones' => $cat_direcciones
+        ));
+
+    }
+
+
+    public function get_puesto($id_area){
         $datos = Cat_puestos::select('id_puesto', 'nom_puesto', 'id_direcciones')->where('id_direcciones', $id_area)->get();
         return response()->json($datos, '200');
-
-
     }
 
     /**
@@ -339,8 +348,7 @@ class UsuariosController extends BaseController {
         $delete = Usuario::find($id);
         $delete->delete();
 
-
-        flash("Se ha eliminado el usuario ".$delete->nombre .''.$delete->apellido_paterno.''.$delete->apellido_materno." de manera exitosa!")->success();
+        flash("Se ha eliminado el usuario ".$delete->nombre .' '.$delete->apellido_paterno.' '.$delete->apellido_materno." de manera exitosa!")->success()->important();
 
         return back();
 

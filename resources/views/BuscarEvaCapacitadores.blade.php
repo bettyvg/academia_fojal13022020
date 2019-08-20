@@ -37,7 +37,6 @@
                                                                             <div class="col-lg-2"><label>Elegir capacitador</label></div>
                                                                             <div class="col-lg-4">
                                                                             <select
-                                                                                    required="true"
                                                                                     class="form-control"
                                                                                     name="id_capacitador"
                                                                                     id="id_capacitador">
@@ -55,7 +54,6 @@
                                                                             <div class="col-lg-2"><label>Desde</label></div>
                                                                             <div class="col-lg-4">
                                                                         <input name="fecha1" id="fecha1"
-                                                                               required="true"
                                                                                type="date"
                                                                                class="form-control"
                                                                                placeholder="Fecha del curso"
@@ -69,7 +67,6 @@
                                                                             <div class="col-lg-4">
                                                                         <input name="fecha2" id="fecha2"
                                                                                type="date"
-
                                                                                class="form-control"
                                                                                placeholder="Fecha del curso"
                                                                                value="{{old('fecha2')}}">
@@ -106,8 +103,8 @@
 
                                                                                                 <table id="table" data-toggle="table"
                                                                                                        data-pagination="true"
-                                                                                                       data-search="true"
                                                                                                        data-show-columns="true"
+                                                                                                       data-search="true"
                                                                                                        data-show-pagination-switch="true"
                                                                                                        data-show-toggle="true" data-resizable="true"
                                                                                                        data-cookie="true"
@@ -124,23 +121,23 @@
                                                                                                         <th data-field="sesion">Sesion</th>
                                                                                                         <th data-field="cve_compuesta_ent_mun">Municipio</th>
                                                                                                         <th data-field="id_institucion">Institución</th>
-                                                                                                        <th data-field="Puntualidad" data-checkbox="false">
-                                                                                                            Puntualidad
-                                                                                                        </th>
-                                                                                                        <th data-field="Conocimiento">
-                                                                                                            Dominio del tema
-                                                                                                        </th>
+                                                                                                        <th data-field="Puntualidad" data-checkbox="false">Puntualidad</th>
+                                                                                                        <th data-field="Conocimiento">Dominio del tema</th>
                                                                                                         <th data-field="Capacidad">Técnica de exposición</th>
                                                                                                         <th data-field="Claridad">Ejemplos aplicados a las empresas</th>
                                                                                                         <th data-field="Utilidad">Ejercicios al finalizar cada tema </th>
-                                                                                                        <th data-field="ModeloEmprendimiento">
-                                                                                                            Empatía con el grupo
-                                                                                                        </th>
-                                                                                                        <th data-field="AisteFojal">Fluidez para hablar
-                                                                                                        </th>
-                                                                                                        <th data-field="PersonaJuridica">Impartió todos los temas
-                                                                                                        </th>
+                                                                                                        <th data-field="ModeloEmprendimiento">Empatía con el grupo</th>
+                                                                                                        <th data-field="AisteFojal">Fluidez para hablar</th>
+                                                                                                        <th data-field="PersonaJuridica">Impartió todos los temas</th>
                                                                                                         <th data-field="AltaHacienda">Capacidad  de resolver preguntas sobre el tema</th>
+                                                                                                        <!--<th data-field="AltaHacienda">Servicio del lugar donde se desarrollo el Curso</th>
+                                                                                                        <th data-field="AltaHacienda">Equipo y herramientas de la exposición</th>
+                                                                                                        <th data-field="AltaHacienda">Considera que se cumplieron los objetivos del curso</th>
+                                                                                                        <th data-field="AltaHacienda">El contenido del cuso aplica para la idea de negocio o negocio establecido</th>
+                                                                                                        <th data-field="AltaHacienda">Considera adecuado el contenido de los cuadernos de trabajo como fuente de apoyo a la presentación</th>
+                                                                                                        <th data-field="AltaHacienda">Es adecuado el tiempo que tarda en registarse en las instalaciones de Fojal</th>
+                                                                                                        <th data-field="AltaHacienda">La atención del personal de recepción</th>
+                                                                                                        <th data-field="AltaHacienda">El registro para los cursos es...</th>-->
                                                                                                     </tr>
                                                                                                     </thead>
                                                                                                     <tbody>
@@ -150,7 +147,7 @@
                                                                                                             <td class="sorting_1">{{$Items->fecha}}</td>
                                                                                                             <td class="sorting_1">{{$Items->nombrepar}}</td>
                                                                                                             <td class="sorting_1">{{$Items->nombre_cap->nom_cap." ".$Items->nombre_cap->apellido_paterno." ".$Items->nombre_cap->apellido_materno}}</td>
-                                                                                                            <td class="sorting_1">{{$Items->sesion}}</td>
+                                                                                                            <td class="sorting_1">{{$Items->temas->num_sesion." - ".$Items->temas->tema}}</td>
                                                                                                             <td class="sorting_1">{{$Items->nombre_municipio->nom_mun}}</td>
                                                                                                             <td class="sorting_1">{{$Items->nombre_institucion->nombre_inst}}</td>
                                                                                                             <td class="sorting_1">{{$Items->puntualidad}}</td>

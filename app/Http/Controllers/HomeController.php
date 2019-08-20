@@ -36,7 +36,7 @@ class HomeController extends Controller
         return View::make('usuarios');
     }
 
-    public function capacitores()
+    public function capacitadores()
     {
         $cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
         $cat_entidades = Cat_entidades::all();
@@ -46,7 +46,7 @@ class HomeController extends Controller
             return Redirect::route('login');
         }
 
-        return View::make('capacitores', array(
+        return View::make('capacitadores', array(
             'cat_municipios' => $cat_municipios,
             'cat_entidades' => $cat_entidades));
     }
@@ -89,6 +89,8 @@ class HomeController extends Controller
         }
         return View::make('cursos');
     }
+
+
 
 
 }

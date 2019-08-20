@@ -470,8 +470,11 @@
             return sprintf('%s  filas por pagina', pageNumber);
         },
         formatShowingRows: function (pageFrom, pageTo, totalRows) {
-            return sprintf('Mostrando de %s a %s de %s filas', pageFrom, pageTo, totalRows);
+            return sprintf('Mostrando de %s a %s', pageFrom, pageTo, totalRows);
         },
+        /*formatShowingRows: function (pageFrom, pageTo, totalRows) {
+            return sprintf('Mostrando de %s a %s de %s filas', pageFrom, pageTo, totalRows);
+        },*/
         formatDetailPagination: function (totalRows) {
             return sprintf('Mostrando %s filas', totalRows);
         },
